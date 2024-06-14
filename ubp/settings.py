@@ -29,9 +29,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['8080-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net','ubp-7ea7f2ca1a6d.herokuapp.com']
 
 
 # Application definition
@@ -95,8 +95,8 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [    
-    "https://*.codeinstitute-ide.net",
-    "https://*.herokuapp.com"
+    "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
+    "https://ubp-7ea7f2ca1a6d.herokuapp.com"
 ]
 
 
