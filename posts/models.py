@@ -1,14 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-
-
-# Constants for default values or choices in the Post model
-STATUS_CHOICES = [
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-        ('archived', 'Archived'),
-    ]
+from .constants import STATUS_CHOICES, COMMENT_STATUS_CHOICES
 
 
 # Create your models here.
@@ -44,4 +37,15 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=10, choices=COMMENT_STATUS_CHOICES, default='pending')
+
+    def __str__(self):
+        return f'Comment by {self.author} on {self.post}'
+
