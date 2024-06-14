@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8080-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net','ubp-7ea7f2ca1a6d.herokuapp.com']
+ALLOWED_HOSTS = ['8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net','ubp-7ea7f2ca1a6d.herokuapp.com']
 
 
 # Application definition
