@@ -15,9 +15,13 @@ class PostListView(ListView):
         return Post.objects.filter(status='published').order_by('-created_at')
 
 
-#class PostDetailView(DetailView):
-    #pass
-# the class will be customized shortly
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'posts/post_detail.html'
+    context_object_name = 'post'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, slug=self.kwargs.get('slug'))
 
 
 #class PostCreateView(CreateView):
