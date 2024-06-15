@@ -1,5 +1,10 @@
 from django.contrib import admin
 from .models import Category, Post, Comment
+from django_summernote.admin import SummernoteModelAdmin
+
+
+
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -15,6 +20,7 @@ class PostAdmin(admin.ModelAdmin):
     raw_id_fields = ('author',)
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
+    summernote_fields = ('content',)
    
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
