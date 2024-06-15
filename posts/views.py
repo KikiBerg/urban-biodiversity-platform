@@ -7,7 +7,7 @@ from .models import Post, Category, Comment
 # Create your views here.
 class PostListView(ListView):
     model = Post
-    template_name = 'posts/posts_list.html'
+    template_name = 'posts/index.html'
     context_object_name = 'posts'
     paginate_by = 10
 
@@ -18,7 +18,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'posts/post_detail.html'
-    context_object_name = 'post'
+    context_object_name = 'detail'
 
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug=self.kwargs.get('slug'))
