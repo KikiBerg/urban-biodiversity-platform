@@ -6,27 +6,55 @@ from .models import Post, Category, Comment
 
 # Create your views here.
 class PostListView(ListView):
-    pass
+    model = Post
+    template_name = 'posts/posts_list.html'
+    context_object_name = 'posts'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Post.objects.filter(status='published').order_by('-created_at')
+
+
+#class PostDetailView(DetailView):
+    #pass
 # the class will be customized shortly
 
 
-class PostDetailView(DetailView):
-    pass
+#class PostCreateView(CreateView):
+    #pass
 # the class will be customized shortly
 
 
-class PostCreateView(CreateView):
-    pass
+#class PostUpdateView(UpdateView):
+    #pass
 # the class will be customized shortly
 
 
-class PostUpdateView(UpdateView):
-    pass
+#class PostDeleteView(DeleteView):
+    #pass
 # the class will be customized shortly
 
 
-class PostDeleteView(DeleteView):
-    pass
+#class CategoryListView(ListView):
+    #pass
 # the class will be customized shortly
 
 
+#class CategoryPostListView(ListView):
+    #pass
+# the class will be customized shortly
+
+
+#class CommentCreateView(CreateView):
+    #pass
+# the class will be customized shortly
+
+
+#class CommentUpdateView(UpdateView):
+    #pass
+# the class will be customized shortly
+
+
+#class CommentDeleteView(DeleteView):
+    #pass
+# the class will be customized shortly
