@@ -6,6 +6,9 @@ from .models import Post, Category, Comment
 
 # Create your views here.
 class PostListView(generic.ListView):
+    """
+    Displays a list of all blog posts
+    """
     model = Post
     template_name = 'posts/index.html'
     context_object_name = 'posts'
@@ -16,6 +19,9 @@ class PostListView(generic.ListView):
 
 
 class PostDetailView(DetailView):
+    """
+    Displays the details of a single post
+    """
     model = Post
     template_name = 'posts/post_detail.html'
     context_object_name = 'detail'
@@ -25,21 +31,32 @@ class PostDetailView(DetailView):
 
 
 class PostCreateView(CreateView):
-    model = Post
+    """
+    Handles the creation of new posts
+    """
+    model = Post    
     template_name = 'posts/post_form.html'
     fields = ['title', 'slug', 'author', 'featured_image', 'content', 'status', 'excerpt', 'category']
+    success_url = reverse_lazy('posts:index')
 
 
 class PostUpdateView(UpdateView):
+    """
+    Handles updating existing posts
+    """
     model = Post
     template_name = 'posts/post_form.html'
     fields = ['title', 'slug', 'author', 'featured_image', 'content', 'status', 'excerpt', 'category']
+    success_url = reverse_lazy('posts:index')
 
 
 class PostDeleteView(DeleteView):
+    """
+    Handles deleting posts
+    """
     model = Post
     template_name = 'posts/post_confirm_delete.html'
-    success_url = '/'
+    success_url = reverse_lazy('posts:index')
 
 
 class CategoryListView(ListView):
@@ -65,6 +82,9 @@ class CategoryPostListView(ListView):
 
 
 class CommentCreateView(CreateView):
+    """
+    Handles the creation of new comments
+    """
     model = Comment
     form_class = CommentForm
     template_name = 'posts/comment_form.html'
@@ -73,14 +93,19 @@ class CommentCreateView(CreateView):
 
 
 class CommentUpdateView(UpdateView):
-    model = Comment
-    form_class = CommentForm
+    """
+    Handles updating existing comments
+    """
+    model = Comment    
     template_name = 'posts/comment_form.html'
     success_url = reverse_lazy('index')
     fields = ['content', 'status']
 
 
 class CommentDeleteView(DeleteView):
+    """
+    Handles deleting comments
+    """
     model = Comment
     template_name = 'posts/comment_confirm_delete.html'
     success_url = reverse_lazy('index')
