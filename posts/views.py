@@ -43,12 +43,18 @@ class PostDeleteView(DeleteView):
 
 
 class CategoryListView(ListView):
+    """
+    Displays a list of all blog categories
+    """
     model = Category
     template_name = 'posts/category_list.html'   
     context_object_name = 'categories'
 
 
 class CategoryPostListView(ListView):
+    """
+    Displays a list of blog posts within a specific category
+    """
     model = Post
     template_name = 'posts/category_post_list.html'
     context_object_name = 'posts'
