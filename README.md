@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/readme-images/ubp-logo.png" alt="Urban Biodiversity Platform Logo">
+  <img src="documentation/readme/ubp-logo.png" alt="Urban Biodiversity Platform Logo">
 </p>
 <h1 align="center">Welcome to the Urban Biodiversity Platform</h1>
 
