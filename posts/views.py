@@ -5,7 +5,7 @@ from .models import Post, Category, Comment
 #from django.http import HttpResponse
 
 # Create your views here.
-class PostListView(generic.ListView):
+class PostListView(ListView):
     """
     Displays a list of all blog posts
     """
@@ -85,8 +85,7 @@ class CommentCreateView(CreateView):
     """
     Handles the creation of new comments
     """
-    model = Comment
-    form_class = CommentForm
+    model = Comment    
     template_name = 'posts/comment_form.html'
     success_url = reverse_lazy('index')
     fields = ['post', 'author', 'content', 'status']
