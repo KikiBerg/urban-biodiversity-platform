@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Comment
+from .forms import PostForm, CommentForm
+
 #from django.http import HttpResponse
 
 # Create your views here.
@@ -38,6 +40,11 @@ class PostCreateView(CreateView):
     template_name = 'posts/post_form.html'
     fields = ['title', 'slug', 'author', 'featured_image', 'content', 'status', 'excerpt', 'category']
     success_url = reverse_lazy('posts:index')
+
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class PostUpdateView(UpdateView):
