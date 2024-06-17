@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'author', 'created_at', 'status', 'category')
     list_filter = ('status', 'category')
     search_fields = ('title', 'content')
