@@ -40,9 +40,31 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">                            
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
-                            href="{% url 'index' %}">Home</a>
-                        
+                            href="{% url 'index' %}">Home</a> 
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == about_url %}active" aria-current="page{% endif %}"
+                            href="#">About/Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == about_url %}active" aria-current="page{% endif %}"
+                            href="#">Categories</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
+                            href="#">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                            href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                            href="#">Login</a>
+                    </li>
+                    {% endif %}
 
                 </ul>
                 <span class="navbar-text text-muted">
