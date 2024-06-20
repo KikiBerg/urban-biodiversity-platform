@@ -28,8 +28,61 @@ class PostDetailView(DetailView):
     template_name = 'posts/post_detail.html'
     context_object_name = 'detail'
 
+
     def get_object(self, queryset=None):
+        """
+        Retrieve the Post object based on the provided slug
+        """
         return get_object_or_404(Post, slug=self.kwargs.get('slug'))
+
+
+
+    def get_context_data(self, **kwargs):
+        """
+        Add additional context data for rendering the post detail page
+        """
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        comments = post.comment_set.all().order_by('-created_at')
+        comment_count = post.comment_set.filter(status='approved').count()
+        comment_form = CommentForm()
+
+        # Updating the context dictionary with additional variables
+        context.update({
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form
+        })
+        return context
+
+
+    def post (self, request, *args, **kwargs):
+        """        
+        Handles POST requests to submit new comments.
+        """
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = self.object
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
+            context['comment_form'] = CommentForm()
+        else:
+            context['comment_form'] = comment_form
+        
+        return self.render_to_response(context)
+
+
+
+
 
 
 class PostCreateView(CreateView):
