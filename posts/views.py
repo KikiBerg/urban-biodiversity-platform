@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, CategoryForm
 
 #from django.http import HttpResponse
 
@@ -130,6 +131,13 @@ class CategoryPostListView(ListView):
         context['category'] = self.category
         return context
 
+
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+    model = Category
+    template_name = 'posts/category_form.html'
+    fields = ['name', 'description']
+    success_url = reverse_lazy('category_list')
+    categories_form = CategoryForm
 
 
 
