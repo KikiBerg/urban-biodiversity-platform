@@ -146,6 +146,26 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     categories_form = CategoryForm
 
 
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    Allows users to update the details of a category.
+    """
+    model = Category
+    template_name = 'posts/category_form.html'
+    fields = ['name', 'description']
+    categories_form = CategoryForm    
+    success_url = reverse_lazy('category_list')
+
+
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Handles the deletion of a category.
+    """
+    model = Category
+    template_name = 'posts/category_confirm_delete.html'
+    success_url = reverse_lazy('category_list')
+
+
 
 class PostCreateView(CreateView):
     """
