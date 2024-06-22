@@ -2,7 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
+
+# Import Django's authentication mixins to ensure that users are logged in and have the required permissions
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm, CategoryForm
 
@@ -133,6 +136,9 @@ class CategoryPostListView(ListView):
 
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
+    """
+    Creates new categories
+    """
     model = Category
     template_name = 'posts/category_form.html'
     fields = ['name', 'description']
