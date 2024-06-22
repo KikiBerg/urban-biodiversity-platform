@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <h1>Categories</h1>
+  {% if can_manage_categories %}
+  <a href="{% url 'category_create' %}" class="btn btn-primary">Add Category</a>
+  {% endif %}
+  
+  <ul>
+    {% for category in categories %}
+      <li>
+        <a href="{% url 'category_post_list' category.name %}">{{ category.name }}</a>
+        {% if can_manage_categories %}
+        <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-secondary">Edit</a>
+        <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>No categories found.</li>
+    {% endfor %}
+  </ul>
+  
+{% endblock %}
