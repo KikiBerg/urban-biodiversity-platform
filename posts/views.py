@@ -96,6 +96,15 @@ class CategoryListView(ListView):
     context_object_name = 'categories'
 
 
+    def get_context_data(self, **kwargs):
+        """
+        Adds additional context variables to the template context
+        """
+        context = super().get_context_data(**kwargs)
+        context['can_manage_categories'] = self.request.user.is_authenticated and (self.request.user.is_staff or self.request.user.is_superuser)
+        return context
+
+
 class CategoryPostListView(ListView):
     """    
     This class-based view inherits from ListView and is used 
@@ -144,27 +153,67 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     template_name = 'posts/category_form.html'
     fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
-    categories_form = CategoryForm
+    #categories_form = CategoryForm
 
 
-class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+    def form_valid(self, form):
+        """
+        Displays a success message indicating that the category was created successfully,
+        then calls the parent class's form_valid method to proceed with the creation process.
+        """
+        messages.success(self.request, 'Category created successfully!')
+        return super().form_valid(form)
+
+
+class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Allows users to update the details of a category.
     """
     model = Category
     template_name = 'posts/category_form.html'
     fields = ['name', 'description']
-    categories_form = CategoryForm    
     success_url = reverse_lazy('category_list')
+    #categories_form = CategoryForm
 
 
-class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+    def test_func(self):
+        """
+        Checks if the current user has staff or superuser privileges
+        """
+        return self.request.user.is_staff or self.request.user.is_superuser
+    
+    def form_valid(self, form):
+        """
+        Displays a success message indicating that the category was updated successfully,
+        then calls the parent class's form_valid method to proceed with the update process.
+        """
+        messages.success(self.request, 'Category updated successfully!')
+        return super().form_valid(form)
+
+
+class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Handles the deletion of a category.
     """
     model = Category
     template_name = 'posts/category_confirm_delete.html'
     success_url = reverse_lazy('category_list')
+
+
+    def test_func(self):
+        """
+        Checks if the current user has staff or superuser privileges to delete a category.
+        """
+        return self.request.user.is_staff or self.request.user.is_superuser
+
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Overrides the default delete method to display a success message after deletion.
+        Then it calls the superclass's delete method to proceed with the actuall deletion process.
+        """
+        messages.success(self.request, 'Category deleted successfully!')
+        return super().delete(request, *args, **kwargs)
 
 
 
