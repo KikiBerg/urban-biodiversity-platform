@@ -82,6 +82,53 @@ class PostDetailView(DetailView):
         return self.render_to_response(context)
 
 
+class CategoryListView(ListView):
+    """
+    Displays a list of all categories available in the blog.
+    """
+    model = Category
+    template_name = 'posts/category_list.html'   
+    context_object_name = 'categories'
+
+
+class CategoryPostListView(ListView):
+    """    
+    This class-based view inherits from ListView and is used 
+    to render a list of blog posts belonging to a particular category. 
+    It retrieves the requested category from the URL,filters posts 
+    based on that category, and provides them to the template for rendering.
+    """
+    model = Post
+    template_name = 'posts/category_post_list.html'
+    context_object_name = 'posts'
+
+
+    def get_queryset(self):
+        """
+        Method to retrieve the requested category from the URL and filter the Post objects 
+        based on that category.
+
+        - Retrieve the 'category_name' argument from the URL kwargs.
+        - Use get_object_or_404 to fetch the Category object with the matching name, 
+          raising a 404 error if not found.
+        - Filter Post objects based on the retrieved category and returns the filtered queryset.
+        """
+
+        self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
+        return Post.objects.filter(category=self.category)
+
+
+    def get_context_data(self, **kwargs):
+        """
+        Method to add additional context data to be passed to the template.
+
+        - Call the superclass's get_context_data method to get the default context data.
+        - Add the 'category' object to the context dictionary, making it accessible in the template.
+        - Return the updated context dictionary.
+        """
+        context = super().get_context_data(**kwargs)
+        context['category'] = self.category
+        return context
 
 
 
@@ -120,26 +167,7 @@ class PostDeleteView(DeleteView):
     success_url = reverse_lazy('posts:index')
 
 
-class CategoryListView(ListView):
-    """
-    Displays a list of all blog categories
-    """
-    model = Category
-    template_name = 'posts/category_list.html'   
-    context_object_name = 'categories'
 
-
-class CategoryPostListView(ListView):
-    """
-    Displays a list of blog posts within a specific category
-    """
-    model = Post
-    template_name = 'posts/category_post_list.html'
-    context_object_name = 'posts'
-
-    def get_queryset(self):
-        self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
-        return Post.objects.filter(category=self.category)
 
 
 class CommentCreateView(CreateView):
