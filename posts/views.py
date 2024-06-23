@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm, CategoryForm
 
+
 #from django.http import HttpResponse
 
 # Create your views here.
@@ -158,7 +159,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     template_name = 'posts/category_form.html'
     fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
-    #categories_form = CategoryForm
+    form_class = CategoryForm
 
 
     def form_valid(self, form):
