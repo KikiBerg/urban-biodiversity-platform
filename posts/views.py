@@ -157,7 +157,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     """
     model = Category
     template_name = 'posts/category_form.html'
-    fields = ['name', 'description']
+    #fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
 
@@ -177,9 +177,9 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     model = Category
     template_name = 'posts/category_form.html'
-    fields = ['name', 'description']
+    #fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
-    #categories_form = CategoryForm
+    form_class = CategoryForm
 
 
     def test_func(self):
