@@ -1,20 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 from .constants import STATUS_CHOICES, COMMENT_STATUS_CHOICES
 
 
 # Create your models here.
 
 class Category(models.Model):
+    """
+    Represents a category for blog posts.
+    """
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
+
+    # def save(self, *args, **kwargs):
+    #     """
+    #     Custom save method to automatically generate a slug from the category name.
+    #     """
+    #     if not self.slug:
+    #         self.slug = slugify(self.name)
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
 
 
 class Post(models.Model):
+    """
+    Represents a blog post.
+    """
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -30,6 +45,9 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
     def save(self, *args, **kwargs):
+        """
+        Custom save method to automatically generate a slug from the post title.
+        """
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
@@ -39,6 +57,9 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Represents a comment on a blog post.
+    """
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()

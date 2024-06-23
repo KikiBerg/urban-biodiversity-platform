@@ -95,6 +95,10 @@ class CategoryListView(ListView):
     template_name = 'posts/category_list.html'   
     context_object_name = 'categories'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
 
     def get_context_data(self, **kwargs):
         """
@@ -128,7 +132,8 @@ class CategoryPostListView(ListView):
         - Filter Post objects based on the retrieved category and returns the filtered queryset.
         """
 
-        self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
+        #self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
+        self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
         return Post.objects.filter(category=self.category)
 
 

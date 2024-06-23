@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1>Posts in {{ category.name }}</h1>
+  <ul>
+    {% for post in posts %}
+      <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+    {% empty %}
+        <li>No posts found in this category.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'category_list' %}" class="btn btn-secondary">Back to Categories</a>
+
+
+{% endblock %}

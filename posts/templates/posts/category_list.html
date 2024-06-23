@@ -9,10 +9,12 @@
   <a href="{% url 'category_create' %}" class="btn btn-primary">Add Category</a>
   {% endif %}
   
+  Category name : {{ category.name }}
+
   <ul>
     {% for category in categories %}
       <li>
-        <a href="{% url 'category_post_list' category.name %}">{{ category.name }}</a>
+        <a href="{% url 'category_post_list' category.pk %}">{{ category.name }}</a>
         {% if can_manage_categories %}
         <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-secondary">Edit</a>
         <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-danger">Delete</a>
@@ -24,3 +26,7 @@
   </ul>
   
 {% endblock %}
+
+<!--  
+<a href="{% url 'category_post_list' category.name %}">{{ category.name }}</a>
+-->
