@@ -14,13 +14,6 @@ class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True)
 
-    # def save(self, *args, **kwargs):
-    #     """
-    #     Custom save method to automatically generate a slug from the category name.
-    #     """
-    #     if not self.slug:
-    #         self.slug = slugify(self.name)
-    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
