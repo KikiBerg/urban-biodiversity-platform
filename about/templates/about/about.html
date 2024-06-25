@@ -6,58 +6,77 @@
 
 {% block content %}
 
-<!----------------------------------------------------------- About section -->
-<div class="container mt-5">
 
-  <div class="row">
-    <div class="col-4 text-center">
-      <img src="{% static 'images/juanma-clemente-alloza.jpg' %}" width="75%" />
-    </div>
-    <div class="col-8">
-      <!-- Title goes between these h2 tags -->
-      <h2>{{ about.title }}</h2>
-      <!-- Content goes directly underneath this -->
-      {{ about.content | safe }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col text-right">
-      <!-- Updated on field goes in here -->
-
-      <p class="text-end"><em>Created on: {{ about.created_at }}</em></p>
-      <p class="text-end"><em>Updated on: {{ about.updated_at }}</em></p>
-      
-    </div>
-  </div>
-
-</div>
+<!----------------------------------------------------------- Main container for the about page content -->
+<section class="container mt-5">
   
+  <div class="row justify-content-center">
+    <!-- Profile image section -->
+     <div class="col-12 text-center mb-4">
+      {% if "placeholder" in about.profile_image.url %}
+      <img src="{% static 'images/juanma-clemente-alloza.jpg' %}" width="60%" alt="###" />
+      {% else %}
+      <img src="{{ about.profile_image.url }}" width="60%" alt="{{ about.title }}">
+      {% endif %}
+     </div>
+     
+    <!-- About content section -->
+    <article class="col-md-8 custom-background text-black text-left card rounded-100 my-3 p-4">
+      <header>
+        <!-- Title goes between these h2 tags -->
+        <h2>{{ about.title }}</h2>
+      </header>
+
+      <hr>
+
+      <div>
+        <p>{{ about.content | safe }}</p>
+      </div>
+    </article>
+  </div>
+
+    <!-- Created at & Updated at fields -->
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center"><em>Created on: {{ about.created_at }}</em></p>
+      <p class="text-center"><em>Updated on: {{ about.updated_at }}</em></p>      
+    </div>
+  </div>
+
+  <br>  
+
 <!----------------------------------------------------------- ContactUs section -->
 
-<!-- Contact Header -->
-<div class="contact-header">
-  <div class="container text-center">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, feel free to contact us. We're here to help!</p>
-  </div>
-</div>  
-  
-
-
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6 my-5">
-        <h2>Contact Us</h2>
-        <p>Feel free to get in touch with us!</p>
-        <p>Leave feedback or a collaboration request.</p>        
+    <div class="col-12 col-md-8 border border-4 mb-4 card rounded-100">      
+      
+      <section class="card my-4 p-4">
+
+        <!-- ContactUs content section -->
+        <header class="text-center mb-4">          
+          <h2>Let's Connect!</h2>
+          <p>If you have any questions or want to give us feedback, feel free to contact us!</p>
+        </header>
+
+        <!-- ContactUs form -->
+        <div class="text-center">
+          <form method="post">
+            {{ contact_us_form | crispy }}
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit" aria-label="Submit Contact Form">Submit</button>            
+          </form>
+        </div>        
+
+      </section>
+
     </div>
   </div>
 
+  
 
-
-
-
-
+</section>
 
 {% endblock content %}
+
 
 
