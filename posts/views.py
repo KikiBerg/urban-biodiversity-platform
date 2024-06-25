@@ -88,17 +88,14 @@ class PostDetailView(DetailView):
         return self.render_to_response(context)
 
 
-class CategoryListView(ListView):
+class CategoryListView(ListView, LoginRequiredMixin):
     """
     Displays a list of all categories available in the blog.
     """
     model = Category
     template_name = 'posts/category_list.html'   
     context_object_name = 'categories'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    permission_required = 'posts.can_manage_categories'
 
 
     def get_context_data(self, **kwargs):
@@ -106,8 +103,16 @@ class CategoryListView(ListView):
         Adds additional context variables to the template context
         """
         context = super().get_context_data(**kwargs)
-        context['can_manage_categories'] = self.request.user.is_authenticated and (self.request.user.is_staff or self.request.user.is_superuser)
+        #context['can_manage_categories'] = self.request.user.is_authenticated and (self.request.user.is_staff or self.request.user.is_superuser)
+        #context['can_manage_categories'] = self.request.user.has_perm('posts.can_manage_categories')
+        context['can_manage_categories'] = self.request.user.is_authenticated and self.request.user.has_perm('posts.can_manage_categories')
+        
+        print(f' is authenticated: {self.request.user.is_authenticated}')
+        print(f"can manage categories: {self.request.user.has_perm('posts.can_manage_categories')}")
+
         return context
+    
+    
 
 
 class CategoryPostListView(ListView):
@@ -160,6 +165,11 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     #fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
+    permission_required = 'posts.can_manage_categories'
+
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to manage categories. Please sign in or register first.")
+        return redirect('account_login')
 
 
     def form_valid(self, form):
@@ -180,13 +190,15 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     #fields = ['name', 'description']
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
+    permission_required = 'posts.can_manage_categories'
 
 
     def test_func(self):
         """
         Checks if the current user has staff or superuser privileges
         """
-        return self.request.user.is_staff or self.request.user.is_superuser
+        return self.request.user.has_perm('posts.can_manage_categories')
+        #return self.request.user.is_staff or self.request.user.is_superuser
     
     def form_valid(self, form):
         """
@@ -204,13 +216,15 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Category
     template_name = 'posts/category_confirm_delete.html'
     success_url = reverse_lazy('category_list')
+    permission_required = 'posts.can_manage_categories'
 
 
     def test_func(self):
         """
         Checks if the current user has staff or superuser privileges to delete a category.
         """
-        return self.request.user.is_staff or self.request.user.is_superuser
+        return self.request.user.has_perm('posts.can_manage_categories')
+        #return self.request.user.is_staff or self.request.user.is_superuser
 
 
     def delete(self, request, *args, **kwargs):

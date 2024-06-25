@@ -33,4 +33,4 @@ class CommentAdmin(admin.ModelAdmin):
 # Register your models here.
 #admin.site.register(Category, CategoryAdmin)
 #admin.site.register(Post, PostAdmin)
-#admin.site.register(Comment, CommentAdmin)
+#admin.site.register(Comment, CommentAdmin)Hi 

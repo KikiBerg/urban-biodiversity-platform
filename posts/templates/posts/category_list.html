@@ -6,16 +6,9 @@
 
 <div class="container mt-4">
   <h1 class="mb-4">Categories</h1>
-  
-  {% if can_manage_categories %}  
+
   <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Add Category</a>
-
-  {% else %}
-  <div class="alert alert-warning" role="alert">
-    You need to be registered and logged in in order to add, update or delete a category.
-  </div>
-  {% endif %}
-
+  
   <div class="list-group">
     {% for category in categories %}
 
