@@ -359,3 +359,23 @@ class CommentDeleteView(DeleteView):
     template_name = 'posts/comment_confirm_delete.html'
     success_url = reverse_lazy('index')
     
+    def get_object(self, queryset=None):
+        """
+        Retrieves the comment object to be deleted
+        """
+        comment_id = self.kwargs.get('comment_id')
+        return get_object_or_404(Comment, pk=comment_id)
+
+
+    def get_context_data(self, **kwargs):
+        """
+        Adds additional context data to be used in the template
+        """
+        context = super().get_context_data(**kwargs)
+        context['post'] = get_object_or_404(Post.objects.filter(status=1), slug=self.kwargs.get('slug'))
+        return context
+    
+    
+
+
+
