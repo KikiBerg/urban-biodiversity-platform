@@ -68,7 +68,9 @@
 
                     {% if user.is_authenticated and comment.author == user %}
                     <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
+
+                    <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}" class="btn btn-edit">Edit</a>
+                    
                     {% endif %}
                 </div>            
                 <!-- End of for loop -->

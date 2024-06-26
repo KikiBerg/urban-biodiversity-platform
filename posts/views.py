@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
-
+from django.http import HttpResponseRedirect
 
 # Import Django's authentication mixins to ensure that users are logged in and have the required permissions
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -111,8 +111,6 @@ class CategoryListView(ListView, LoginRequiredMixin):
         print(f"can manage categories: {self.request.user.has_perm('posts.can_manage_categories')}")
 
         return context
-    
-    
 
 
 class CategoryPostListView(ListView):
@@ -246,7 +244,6 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-
 class PostCreateView(CreateView):
     """
     Handles the creation of new posts
@@ -281,9 +278,6 @@ class PostDeleteView(DeleteView):
     success_url = reverse_lazy('posts:index')
 
 
-
-
-
 class CommentCreateView(CreateView):
     """
     Handles the creation of new comments
@@ -296,12 +290,58 @@ class CommentCreateView(CreateView):
 
 class CommentUpdateView(UpdateView):
     """
-    Handles updating existing comments
+    Handles updating/editing existing comments
     """
     model = Comment    
     template_name = 'posts/comment_form.html'
     success_url = reverse_lazy('index')
-    fields = ['content', 'status']
+    #fields = ['content', 'status']
+    form_class = CommentForm
+    pk_url_kwarg = 'comment_id'
+
+    def get_object(self, queryset=None):
+        """
+        Retrieves the comment instance based on the 'comment_id' passed in the URL.
+        Returns the comment object if found, otherwise raises a Http404 exception.
+        """
+        comment_id = self.kwargs.get('comment_id')        
+        return get_object_or_404(Comment, pk=comment_id)
+
+
+    def get_success_url(self):
+        """
+        Generates the URL to redirect to post detail page of 
+        the post associated with the commentupon successful form submission.      
+        """
+        return reverse('post_detail', args=[self.kwargs['slug']])
+
+
+    def form_valid(self, form):
+        """
+        Called when the form is valid.
+        Saves the updated comment if the current user is the author,
+        sets the approved status to False,
+        and redirects to the success URL.
+        Displays a success message if the update is successful.
+        """
+        if self.object.author == self.request.user:
+            self.object = form.save(commit=False)
+            self.object.approved = False
+            self.object.save()
+            messages.success(self.request, 'Comment Updated!')
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            messages.error(self.request, 'Error updating comment!')
+            return self.form_invalid(form)
+
+
+    def form_invalid(self, form):
+        """
+        Called when the form is invalid. 
+        Redirects to the form page with error messages.
+        """
+        messages.error(self.request, 'Error updating comment!')
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class CommentDeleteView(DeleteView):
