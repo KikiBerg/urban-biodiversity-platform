@@ -358,7 +358,8 @@ class CommentDeleteView(DeleteView):
     model = Comment
     template_name = 'posts/comment_confirm_delete.html'
     success_url = reverse_lazy('index')
-    
+
+
     def get_object(self, queryset=None):
         """
         Retrieves the comment object to be deleted
@@ -374,8 +375,23 @@ class CommentDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['post'] = get_object_or_404(Post.objects.filter(status=1), slug=self.kwargs.get('slug'))
         return context
-    
-    
+
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Handles the deletion of the comment
+        """
+        self.object = self.get_object()
+        if self.object.author == request.user:
+            success_url = self.get_success_url()
+            self.object.delete()
+            messages.success(request, 'Comment deleted!')
+            return HttpResponseRedirect(success_url)
+        else:
+            messages.error(request, 'You can only delete your own comments!')
+            return HttpResponseRedirect(self.get_success_url())
+
+
 
 
 
