@@ -3,12 +3,36 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-<h2>Edit Comment</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-edit">Update Comment</button>
-</form>
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Card container for the form -->
+            <div class="card mt-5">
+                <!-- Card header with centered title -->
+                <div class="card-header bg-primary">
+                    <h2 class="mb-0 text-white text-center">Edit Comment</h2>
+                </div>
+                <!-- Card body containing the form -->
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <!-- Render form fields using crispy forms -->
+                        {{ form|crispy }}
+                        <!-- Container for buttons -->
+                        <div class="d-flex justify-content-center mt-3">
+                            <!-- Update button -->
+                            <button type="submit" class="btn btn-edit mx-2">
+                                <i class="fas fa-edit"></i> Update</button>
+                            <!-- Cancel button linking back to post detail -->
+                            <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-secondary mx-2">                                
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+

@@ -344,6 +344,13 @@ class CommentUpdateView(UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = get_object_or_404(Post, slug=self.kwargs['slug'])
+        context['post'] = post
+        return context
+
+
 class CommentDeleteView(DeleteView):
     """
     Handles deleting comments

@@ -18,7 +18,7 @@ class CommentForm(forms.ModelForm):
     author, content, and status.   
     """
     class Meta:
-        model = Comment
+        model = Comment        
         fields = ['post', 'author', 'content', 'status']
 
 
