@@ -199,7 +199,12 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         return self.request.user.has_perm('posts.can_manage_categories')
         #return self.request.user.is_staff or self.request.user.is_superuser
-    
+
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to update categories. Please sign in or register first.")
+        return redirect('account_login')
+
+
     def form_valid(self, form):
         """
         Displays a success message indicating that the category was updated successfully,
@@ -225,6 +230,11 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         return self.request.user.has_perm('posts.can_manage_categories')
         #return self.request.user.is_staff or self.request.user.is_superuser
+
+
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to delete categories. Please sign in or register first.")
+        return redirect('account_login')
 
 
     def delete(self, request, *args, **kwargs):
