@@ -67,7 +67,8 @@
                     {% endif %}
 
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
+                    
+                    <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}" class="btn btn-delete">Delete</a>
 
                     <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}" class="btn btn-edit">Edit</a>
                     

@@ -362,10 +362,12 @@ class CommentDeleteView(DeleteView):
 
     def get_object(self, queryset=None):
         """
-        Retrieves the comment object to be deleted
+        Retrieves the comment to be deleted
         """
         comment_id = self.kwargs.get('comment_id')
-        return get_object_or_404(Comment, pk=comment_id)
+        self.comment = get_object_or_404(Comment, pk=comment_id)
+        self.post = get_object_or_404(Post, slug=self.kwargs.get('slug'))
+        return self.comment
 
 
     def get_context_data(self, **kwargs):
@@ -373,7 +375,7 @@ class CommentDeleteView(DeleteView):
         Adds additional context data to be used in the template
         """
         context = super().get_context_data(**kwargs)
-        context['post'] = get_object_or_404(Post.objects.filter(status=1), slug=self.kwargs.get('slug'))
+        context['post'] = self.post
         return context
 
 

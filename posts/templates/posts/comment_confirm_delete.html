@@ -9,7 +9,7 @@
 <blockquote>
     {{ comment.body }}
 </blockquote>
-<p>Posted by {{ comment.author }} on {{ comment.created_on }}</p>
+<p>Posted by {{ comment.author }} on {{ comment.created_at }}</p>
 
 <form method="post">
     {% csrf_token %}
