@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
-from .constants import STATUS_CHOICES, COMMENT_STATUS_CHOICES
+from .constants import STATUS_CHOICES, COMMENT_STATUS_CHOICES, STATUS_CATEGORIES
 
 
 # Create your models here.

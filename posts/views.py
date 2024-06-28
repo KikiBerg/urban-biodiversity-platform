@@ -88,7 +88,7 @@ class PostDetailView(DetailView):
         return self.render_to_response(context)
 
 
-class CategoryListView(ListView, LoginRequiredMixin):
+class CategoryListView(ListView):
     """
     Displays a list of all categories available in the blog.
     """
@@ -107,8 +107,8 @@ class CategoryListView(ListView, LoginRequiredMixin):
         #context['can_manage_categories'] = self.request.user.has_perm('posts.can_manage_categories')
         context['can_manage_categories'] = self.request.user.is_authenticated and self.request.user.has_perm('posts.can_manage_categories')
         
-        print(f' is authenticated: {self.request.user.is_authenticated}')
-        print(f"can manage categories: {self.request.user.has_perm('posts.can_manage_categories')}")
+        #print(f' is authenticated: {self.request.user.is_authenticated}')
+        #print(f"can manage categories: {self.request.user.has_perm('posts.can_manage_categories')}")
 
         return context
 
@@ -164,10 +164,6 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     form_class = CategoryForm
     permission_required = 'posts.can_manage_categories'
 
-    def handle_no_permission(self):
-        messages.error(self.request, "You don't have permission to manage categories. Please sign in or register first.")
-        return redirect('account_login')
-
 
     def form_valid(self, form):
         """
@@ -178,6 +174,12 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
         form.instance.status = 'pending'
         messages.success(self.request, 'Category created successfully! It is pending approval.')
         return super().form_valid(form)
+
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -196,11 +198,6 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         Checks if the current user has staff or superuser privileges
         """
         return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
-        #return self.request.user.is_staff or self.request.user.is_superuser
-
-    def handle_no_permission(self):
-        messages.error(self.request, "You don't have permission to update categories. Please sign in or register first.")
-        return redirect('account_login')
 
 
     def form_valid(self, form):
@@ -215,6 +212,12 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         else:
             messages.success(self.request, 'Category updated successfully!')
         return super().form_valid(form)
+
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -233,11 +236,6 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
         #return self.request.user.is_staff or self.request.user.is_superuser
-
-
-    def handle_no_permission(self):
-        messages.error(self.request, "You don't have permission to delete categories. Please sign in or register first.")
-        return redirect('account_login')
 
 
     def delete(self, request, *args, **kwargs):

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment, Category
+from .constants import STATUS_CATEGORIES
 
 
 class PostForm(forms.ModelForm):
@@ -44,3 +45,13 @@ class CategoryForm(forms.ModelForm):
         if Category.objects.filter (name__iexact=name).exclude(pk=self.instance.pk).exists():
             raise forms.ValidationError('A category with this name already exists.')
         return name
+
+
+    def __init__(self, *args, **kwargs):
+        """
+        Method to exclude the status field for non-admin users
+        """
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user and user.has_perm('posts.can_manage_categories'):
+            self.fields['status'] = forms.ChoiceField(choices=STATUS_CATEGORIES)
