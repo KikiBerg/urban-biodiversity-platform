@@ -159,8 +159,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     Creates new categories
     """
     model = Category
-    template_name = 'posts/category_form.html'
-    #fields = ['name', 'description']
+    template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
     permission_required = 'posts.can_manage_categories'
@@ -175,7 +174,9 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
         Displays a success message indicating that the category was created successfully,
         then calls the parent class's form_valid method to proceed with the creation process.
         """
-        messages.success(self.request, 'Category created successfully!')
+        form.instance.created_by = self.request.user
+        form.instance.status = 'pending'
+        messages.success(self.request, 'Category created successfully! It is pending approval.')
         return super().form_valid(form)
 
 
@@ -184,8 +185,7 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     Allows users to update the details of a category.
     """
     model = Category
-    template_name = 'posts/category_form.html'
-    #fields = ['name', 'description']
+    template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
     permission_required = 'posts.can_manage_categories'
@@ -195,7 +195,7 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         Checks if the current user has staff or superuser privileges
         """
-        return self.request.user.has_perm('posts.can_manage_categories')
+        return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
         #return self.request.user.is_staff or self.request.user.is_superuser
 
     def handle_no_permission(self):
@@ -205,10 +205,15 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         """
-        Displays a success message indicating that the category was updated successfully,
-        then calls the parent class's form_valid method to proceed with the update process.
+        Displays a success message indicating that the 
+        category was updated successfully, then calls the parent class's 
+        form_valid method to proceed with the update process.
         """
-        messages.success(self.request, 'Category updated successfully!')
+        if not self.request.user.has_perm('posts.can_manage_categories'):
+            form.instance.status = 'pending'
+            messages.success(self.request, 'Category updated successfully! Changes are pending approval.')
+        else:
+            messages.success(self.request, 'Category updated successfully!')
         return super().form_valid(form)
 
 

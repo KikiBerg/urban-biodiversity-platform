@@ -2,7 +2,7 @@
 This module defines constants used throughout the posts app.
 """
 
-# Status choices for blog posts
+################################## Status choices for blog posts
 STATUS_CHOICES = [
         ('draft', 'Draft'),
         ('published', 'Published'),
@@ -18,7 +18,7 @@ Possible values:
 """
 
 
-# Status choices for comments
+################################## Status choices for comments
 COMMENT_STATUS_CHOICES = [
     ('pending', 'Pending'),
     ('approved', 'Approved'),
@@ -33,3 +33,12 @@ Possible values:
 - 'approved': The comment is approved and visible to users.
 - 'rejected': The comment is rejected and not visible to users.
 """
+
+
+################################## Status choices for comments
+STATUS_CATEGORIES = [
+    ('pending', 'Pending'),
+    ('approved', 'Approved'),
+    ('rejected', 'Rejected'),
+]
+
