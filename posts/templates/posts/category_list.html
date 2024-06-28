@@ -4,12 +4,14 @@
 
 {% block content %}
 
-<div class="container mt-4">
-  <h1 class="mb-4">Categories</h1>  
-    
-  <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Add Category</a>
- 
+<div class="container mt-4">  
+  <h1 class="mb-4">Categories</h1>
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Add Category</a>
+  {% else %} 
   <p>Please register/login in order to manage the categories on this page</p>
+  {% endif %}
   
   
   
@@ -21,7 +23,7 @@
         <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
       </a>
       
-      {% if user.is_authenticated and category.created_by == user or can_manage_categories %}     
+      {% if user.is_superuser or category.created_by == user %}     
       <div>
         <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i>Edit</a>
         <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>

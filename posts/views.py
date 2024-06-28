@@ -1,17 +1,19 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponseRedirect
 
 # Import Django's authentication mixins to ensure that users are logged in and have the required permissions
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+#from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm, CategoryForm
+from .decorators import superuser_or_creator_required
 
 
-#from django.http import HttpResponse
 
 # Create your views here.
 class PostListView(ListView):
@@ -95,7 +97,7 @@ class CategoryListView(ListView):
     model = Category
     template_name = 'posts/category_list.html'   
     context_object_name = 'categories'
-    permission_required = 'posts.can_manage_categories'
+    #permission_required = 'posts.can_manage_categories'
 
 
     def get_context_data(self, **kwargs):
@@ -103,13 +105,7 @@ class CategoryListView(ListView):
         Adds additional context variables to the template context
         """
         context = super().get_context_data(**kwargs)
-        #context['can_manage_categories'] = self.request.user.is_authenticated and (self.request.user.is_staff or self.request.user.is_superuser)
-        #context['can_manage_categories'] = self.request.user.has_perm('posts.can_manage_categories')
-        context['can_manage_categories'] = self.request.user.is_authenticated and self.request.user.has_perm('posts.can_manage_categories')
-        
-        #print(f' is authenticated: {self.request.user.is_authenticated}')
-        #print(f"can manage categories: {self.request.user.has_perm('posts.can_manage_categories')}")
-
+        context['user'] = self.request.user
         return context
 
 
@@ -154,7 +150,8 @@ class CategoryPostListView(ListView):
         return context
 
 
-class CategoryCreateView(LoginRequiredMixin, CreateView):
+@method_decorator(login_required, name='dispatch')
+class CategoryCreateView(CreateView):
     """
     Creates new categories
     """
@@ -162,7 +159,7 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
-    permission_required = 'posts.can_manage_categories'
+    #permission_required = 'posts.can_manage_categories'
 
 
     def form_valid(self, form):
@@ -182,7 +179,8 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
         return kwargs
 
 
-class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+@method_decorator([login_required, superuser_or_creator_required], name='dispatch')
+class CategoryUpdateView(UpdateView):
     """
     Allows users to update the details of a category.
     """
@@ -190,14 +188,7 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
-    permission_required = 'posts.can_manage_categories'
-
-
-    def test_func(self):
-        """
-        Checks if the current user has staff or superuser privileges
-        """
-        return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
+    #permission_required = 'posts.can_manage_categories'
 
 
     def form_valid(self, form):
@@ -206,7 +197,7 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         category was updated successfully, then calls the parent class's 
         form_valid method to proceed with the update process.
         """
-        if not self.request.user.has_perm('posts.can_manage_categories'):
+        if not self.request.user.is_superuser:
             form.instance.status = 'pending'
             messages.success(self.request, 'Category updated successfully! Changes are pending approval.')
         else:
@@ -214,28 +205,15 @@ class CategoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
-
-
-class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+@method_decorator([login_required, superuser_or_creator_required], name='dispatch')
+class CategoryDeleteView(DeleteView):
     """
     Handles the deletion of a category.
     """
     model = Category
     template_name = 'posts/category_confirm_delete.html'
     success_url = reverse_lazy('category_list')
-    permission_required = 'posts.can_manage_categories'
-
-
-    def test_func(self):
-        """
-        Checks if the current user has staff or superuser privileges to delete a category.
-        """
-        return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
-        #return self.request.user.is_staff or self.request.user.is_superuser
+    #permission_required = 'posts.can_manage_categories'
 
 
     def delete(self, request, *args, **kwargs):
@@ -243,7 +221,7 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         Overrides the default delete method to display a success message after deletion.
         Then it calls the superclass's delete method to proceed with the actuall deletion process.
         """
-        if not self.request.user.has_perm('posts.can_manage_categories'):
+        if not self.request.user.is_superuser:
             messages.success(self.request, 'Category deletion request submitted. It is pending approval.')
             self.object = self.get_object()
             self.object.status = 'pending'
