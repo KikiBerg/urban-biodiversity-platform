@@ -231,7 +231,7 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         Checks if the current user has staff or superuser privileges to delete a category.
         """
-        return self.request.user.has_perm('posts.can_manage_categories')
+        return self.request.user.has_perm('posts.can_manage_categories') or self.get_object().created_by == self.request.user
         #return self.request.user.is_staff or self.request.user.is_superuser
 
 
@@ -245,6 +245,12 @@ class CategoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         Overrides the default delete method to display a success message after deletion.
         Then it calls the superclass's delete method to proceed with the actuall deletion process.
         """
+        if not self.request.user.has_perm('posts.can_manage_categories'):
+            messages.success(self.request, 'Category deletion request submitted. It is pending approval.')
+            self.object = self.get_object()
+            self.object.status = 'pending'
+            self.object.save()
+            return redirect(self.success_url)
         messages.success(self.request, 'Category deleted successfully!')
         return super().delete(request, *args, **kwargs)
 
