@@ -102,7 +102,15 @@ class CategoryListView(ListView):
     model = Category
     template_name = 'posts/category_list.html'   
     context_object_name = 'categories'
-    #permission_required = 'posts.can_manage_categories'
+
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            # Authenticated users can see all categories
+            return Category.objects.all()
+        else:
+            # Non-authenticated users can only see approved categories
+            return Category.objects.filter(status='approved')
 
 
     def get_context_data(self, **kwargs):

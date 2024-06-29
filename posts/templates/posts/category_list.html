@@ -10,8 +10,7 @@
   {% if user.is_authenticated %}
     <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Add Category</a>
   {% else %} 
-  <p>If you are not registered, you have access to only our approved categories.</p>
-  <p>Please register/login in order to manage you own categories on this page</p>
+  <p>You are viewing approved categories. Please register or login to manage your own categories.</p>
   {% endif %}
   
   
@@ -24,19 +23,21 @@
         <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
       </a>
       
-      {% if user.is_superuser or category.created_by == user %}     
-      <div>
-        <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i>Edit</a>
-        <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
-      </div>
+      {% if user.is_authenticated %}
+        {% if user.is_superuser or category.created_by == user %}     
+        <div>
+          <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i>Edit</a>
+          <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+        </div>
+        {% endif %}
+        <span class="badge {% if category.status == 'approved' %}bg-success{% elif category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+          {{ category.get_status_display }}
+        </span>
       {% endif %}
-      <span class="badge {% if category.status == 'approved' %}bg-success{% elif category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
-        {{ category.get_status_display }}
-      </span>
     </div>    
     {% empty %}
     <div class="alert alert-info" role="alert">
-      Unfortunately, no such categories could be found!
+      No categories found.
     </div>    
     {% endfor %}
   </div>

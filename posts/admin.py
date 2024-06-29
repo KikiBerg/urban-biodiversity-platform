@@ -7,8 +7,9 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
-    search_fields = ('name', 'description')
+    list_display = ('name', 'description', 'status', 'created_by')
+    list_filter = ('status',)
+    search_fields = ('name', 'description')    
 
 
 @admin.register(Post)
