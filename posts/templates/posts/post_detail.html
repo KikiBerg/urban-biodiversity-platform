@@ -11,9 +11,17 @@
                 <h1 class="post-title">{{ detail.title }}</h1>
                 <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">{{ detail.author.username }} | {{ detail.created_at }}</p>
+                <p class="post-subtitle"> This article can be found in "{{ detail.category.name }}" category</p>
+                
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/pexels-sido-bentriki.jpg' %}" class="scale" alt="placeholder">
+                <div class="container">
+                    {% if "placeholder" in detail.featured_image.url %}
+                    <img src="{% static 'images/anne-nygard.jpg' %}" class="scale" alt="placeholder image">
+                    {% else %}
+                    <img src="{{ detail.featured_image.url }}" class="scale" alt="{{ detail.title }}">
+                    {% endif %}
+                </div>                
             </div>
         </div>
     </div>
@@ -28,8 +36,8 @@
                 <article class="card-text">
                     {{ detail.content | safe }}
                 </article>
+                               
                 
-                <p>Category: {{ detail.category.name }}</p>
                 <p>Excerpt: {{ detail.excerpt }}</p>
                 <p>Upvotes: {{ detail.upvotes }} | Downvotes: {{ detail.downvotes }}</p>
             </div>
