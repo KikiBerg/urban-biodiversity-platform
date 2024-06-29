@@ -54,7 +54,10 @@
             <div class="card-body">
                 <!-- Loop through each comment in comments -->
                 {% for comment in comments %}
-                <div class="p-2 comments {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %} d-none{% endif %}">
+                <!-- Display comment based on approval status and user authentication -->
+                
+                <div class="p-2 comments 
+                {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
                     <p class="font-weight-bold"> {{ comment.author.username }}
                         <span class="font-weight-normal">{{ comment.created_at }}</span> wrote: 
                     </p>

@@ -45,18 +45,23 @@ class PostDetailView(DetailView):
         return get_object_or_404(Post, slug=self.kwargs.get('slug'))
 
 
-
     def get_context_data(self, **kwargs):
         """
         Add additional context data for rendering the post detail page
         """
         context = super().get_context_data(**kwargs)
         post = self.get_object()
-        comments = post.comment_set.all().order_by('-created_at')
-        comment_count = post.comment_set.filter(status='approved').count()
+
+        if self.request.user.is_superuser:
+            comments = post.comment_set.all().order_by('-created_at')
+        elif self.request.user == post.author:
+            comments = post.comment_set.all().order_by('-created_at')
+        else:
+            comments = post.comment_set.filter(approved=True).order_by('-created_at')
+
+        comment_count = comments.count()
         comment_form = CommentForm()
 
-        # Updating the context dictionary with additional variables
         context.update({
             "post": post,
             "comments": comments,

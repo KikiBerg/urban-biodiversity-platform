@@ -5,11 +5,11 @@ from django_summernote.admin import SummernoteModelAdmin
 
 
 
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
     search_fields = ('name', 'description')
+
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
@@ -21,12 +21,20 @@ class PostAdmin(SummernoteModelAdmin):
     date_hierarchy = 'created_at'
     ordering = ('-created_at',)
     summernote_fields = ('content',)
-   
+
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post', 'author', 'content', 'created_at', 'status')
-    list_filter = ('status', 'created_at')
+    list_display = ('post', 'author', 'content', 'created_at', 'status', 'approved')
+    list_filter = ('status', 'created_at', 'approved')
     search_fields = ('author', 'content')
+    actions = ['approve_comments']
+
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)
+        self.message_user(request, "Selected comments have been approved.")
+    approve_comments.short_description = "Approve selected comments"
 
 
 

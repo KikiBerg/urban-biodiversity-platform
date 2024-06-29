@@ -20,7 +20,7 @@ class CommentForm(forms.ModelForm):
     """
     class Meta:
         model = Comment        
-        fields = ['post', 'author', 'content', 'status']
+        fields = ['content']
 
 
 class CategoryForm(forms.ModelForm):
