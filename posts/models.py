@@ -45,6 +45,11 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 
+
+    class Meta:
+        ordering = ["-created_at"]
+
+
     def save(self, *args, **kwargs):
         """
         Custom save method to automatically generate a slug from the post title.
@@ -52,6 +57,7 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
@@ -67,6 +73,10 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=COMMENT_STATUS_CHOICES, default='pending')
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["created_at"]
 
     def __str__(self):
         return f'Comment by {self.author} on {self.post}'
