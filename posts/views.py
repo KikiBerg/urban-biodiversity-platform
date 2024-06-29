@@ -145,15 +145,16 @@ class CategoryPostListView(ListView):
         - Filter Post objects based on the retrieved category and returns the filtered queryset.
         """
 
-        #self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
+
         self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
+        if not self.request.user.is_authenticated and self.category.status != 'approved':
+            return Post.objects.none()
         return Post.objects.filter(category=self.category)
 
 
     def get_context_data(self, **kwargs):
         """
         Method to add additional context data to be passed to the template.
-
         - Call the superclass's get_context_data method to get the default context data.
         - Add the 'category' object to the context dictionary, making it accessible in the template.
         - Return the updated context dictionary.
