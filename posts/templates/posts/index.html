@@ -4,17 +4,14 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container">
-    <!-- Changed to container for a more centered layout -->
+<div class="container">    
     <div class="row">
-        <div class="col-12">
-            <!-- Removed unnecessary nesting -->
-            <h1 class="mb-4">ARTICLES</h1>
-            <!-- Added a main heading for the blog page -->
+        <div class="col-12">            
+            <h1 class="mb-4">ARTICLES</h1>            
             
             {% for post in posts %}
             <div class="blog-post mb-5">
-                <!-- Changed to a single column layout with more vertical spacing -->
+                <!-- Single column layout with more vertical spacing -->
                 <div class="row">
                     <div class="col-md-4">
                         <!-- Image column -->
@@ -31,15 +28,15 @@
                         <h2 class="blog-post-title">
                             <a href="{% url 'post_detail' post.slug %}" class="text-dark">{{ post.title }}</a>
                         </h2>
-                        <!-- Moved title outside of card and styled as a link -->
+                        <!-- Move title outside of card and style as a link -->
                         <p class="blog-post-meta text-muted">
                             {{ post.created_at|date:"F j, Y" }} by {{ post.author.username }}
                         </p>
-                        <!-- Formatted date and author information -->
+                        <!-- Format date and author information -->
                         <p class="blog-post-excerpt">{{ post.excerpt }}</p>
-                        <!-- Added excerpt as a separate paragraph -->
+                        <!-- Excerpt as a separate paragraph -->
                         <a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-primary">Read more</a>
-                        <!-- Added a "Read more" button -->
+                        <!-- "Read more" button -->
                     </div>
                 </div>
             </div>
