@@ -7,8 +7,9 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #444;
 }
+
 
 .red-o {
     color: #E84610;
@@ -73,7 +74,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #444;
     color: white;
     position: relative;
 }
@@ -90,7 +91,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #444;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -99,7 +100,7 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #444;
 }
 
 .post-link:hover,
@@ -183,7 +184,7 @@ body {
 }
 
 .blog-post-title a {
-    color: #333;
+    color: #444;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -205,7 +206,7 @@ body {
 .category-tag {
     display: inline-block;
     background-color: #f0f0f0;
-    color: #333;
+    color: #444;
     padding: 0.2rem 0.5rem;
     margin-right: 0.5rem;
     font-size: 0.8rem;
@@ -250,4 +251,43 @@ body {
     color: #6c757d;
     pointer-events: none;
     background-color: transparent;
+}
+
+/* -----------------------------------------------------------Intro section styles */
+
+.intro-section .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background: rgba(149, 169, 104, 0.8)
+    
+}
+
+.intro-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.intro-section .card-title {
+    color: #95A968;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.intro-section .card-text {
+    color: #444;
+    line-height: 1.6;
+}
+
+.intro-section ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.intro-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.intro-section .fas {
+    margin-right: 0.5rem;
+    color: #95A968;
 }
