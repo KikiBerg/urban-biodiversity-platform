@@ -7,37 +7,40 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="mb-4">ARTICLES</h1>
-
+            <h1 class="mb-4 text-center">ARTICLES</h1>            
             {% for post in posts %}
-            <div class="blog-post mb-5">
-                <!-- Single column layout with more vertical spacing -->
+            <div class="blog-post mb-5">                
                 <div class="row">
                     <div class="col-md-4">
                         <!-- Image column -->
                         <div class="image-container">
                             {% if "placeholder" in post.featured_image.url %}
-                            <img class="img-fluid rounded" src="{% static 'images/anne-nygard.jpg' %}"
-                                alt="placeholder image">
+                            <img class="img-fluid" src="{% static 'images/anne-nygard.jpg' %}" alt="placeholder image">
                             {% else %}
-                            <img class="img-fluid rounded" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                            <img class="img-fluid" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                             {% endif %}
                         </div>
                     </div>
                     <div class="col-md-8">
                         <!-- Content column -->
                         <h2 class="blog-post-title">
-                            <a href="{% url 'post_detail' post.slug %}" class="text-dark">{{ post.title }}</a>
+                            <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
                         </h2>
-                        <!-- Move title outside of card and style as a link -->
-                        <p class="blog-post-meta text-muted">
-                            {{ post.created_at|date:"F j, Y" }} by {{ post.author.username }}
+                        <!-- Move meta information below the title -->
+                        <p class="blog-post-meta">
+                            {{ post.created_at|date:"F j, Y" }} | {{ post.author.username }}
                         </p>
-                        <!-- Format date and author information -->
-                        <p class="blog-post-excerpt">{{ post.excerpt }}</p>
-                        <!-- Excerpt as a separate paragraph -->
+                        <!-- Add categories if available -->
+                        {% if post.categories.all %}
+                        <p class="blog-post-categories">
+                            {% for category in post.categories.all %}
+                            <span class="category-tag">{{ category.name }}</span>
+                            {% endfor %}
+                        </p>
+                        {% endif %}
+                        <p class="blog-post-excerpt">{{ post.excerpt }}</p>                        
                         <a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-primary">Read more</a>
-                        <!-- "Read more" button -->
+                        
                     </div>
                 </div>
             </div>
@@ -89,7 +92,6 @@
     </nav>
     {% endif %}
 </div>
-
 <!-- index.html content ends here -->
 {% endblock %}
 {% block copyright %}Copyright 2024 by Kiki{% endblock %}

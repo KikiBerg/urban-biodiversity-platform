@@ -1,6 +1,7 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #9E9797;
 }
+
 
 .brand {
     font-family: Lato, sans-serif;
@@ -29,13 +30,18 @@ body {
     background-color: #F9FAFC;
 }
 
+.image-container {
+    position: relative;
+}
+
 .card {
     border: none;
     background-color: transparent;
+    transition: box-shadow 0.3s ease;
 }
 
-.image-container {
-    position: relative;
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .image-flash {
@@ -158,4 +164,90 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+/* -----------------------------------------------------------Posts list styles */
+.blog-post {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.blog-post:last-child {
+    border-bottom: none;
+}
+
+.blog-post-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-post-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-post-title a:hover {
+    color: #95A968;
+}
+
+.blog-post-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.blog-post-categories {
+    margin-bottom: 1rem;
+}
+
+.category-tag {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 3px;
+}
+
+.blog-post-excerpt {
+    color: #444;
+    line-height: 1.6;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-container:hover img {
+    transform: scale(1.03);
+}
+
+/* -----------------------------------------------------------Pagination styles */
+
+.pagination {
+    margin-top: 1rem;
+}
+
+.page-item .page-link {
+    color: #188181;
+    border: none;
+    font-weight: bold;
+}
+
+.page-item .page-link:hover {
+    background-color: transparent;
+    color: #0056b3;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: transparent;
 }
