@@ -30,13 +30,13 @@ body {
     background-color: #F9FAFC;
 }
 
+.image-container {
+    position: relative;
+}
+
 .card {
     border: none;
     background-color: transparent;
-}
-
-.image-container {
-    position: relative;
 }
 
 .image-flash {

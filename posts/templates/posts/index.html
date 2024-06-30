@@ -4,11 +4,11 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container">    
+<div class="container">
     <div class="row">
-        <div class="col-12">            
-            <h1 class="mb-4">ARTICLES</h1>            
-            
+        <div class="col-12">
+            <h1 class="mb-4">ARTICLES</h1>
+
             {% for post in posts %}
             <div class="blog-post mb-5">
                 <!-- Single column layout with more vertical spacing -->
@@ -17,7 +17,8 @@
                         <!-- Image column -->
                         <div class="image-container">
                             {% if "placeholder" in post.featured_image.url %}
-                            <img class="img-fluid rounded" src="{% static 'images/anne-nygard.jpg' %}" alt="placeholder image">
+                            <img class="img-fluid rounded" src="{% static 'images/anne-nygard.jpg' %}"
+                                alt="placeholder image">
                             {% else %}
                             <img class="img-fluid rounded" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                             {% endif %}
@@ -44,17 +45,44 @@
         </div>
     </div>
 
+    <!-- Pagination & page counting -->
     {% if is_paginated %}
     <nav aria-label="Page navigation" class="mt-4">
+        <!-- Page count information -->
+        <p class="text-center mb-2">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </p>
+
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li class="page-item">
                 <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
             </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">&laquo; Previous</span>
+            </li>
             {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <li class="page-item active">
+                <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
+            </li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
             {% if page_obj.has_next %}
             <li class="page-item">
                 <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Next &raquo;</span>
             </li>
             {% endif %}
         </ul>
