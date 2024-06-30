@@ -51,10 +51,11 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """
         Add additional context data for rendering the post detail page
-        """
+        """        
+
         context = super().get_context_data(**kwargs)
-        context['upvotes_count'] = self.object.upvotes.count()
-        context['downvotes_count'] = self.object.downvotes.count()
+        #context['upvotes_count'] = self.object.upvotes.count()
+        #context['downvotes_count'] = self.object.downvotes.count()
         post = self.get_object()
 
         if self.request.user.is_superuser:
@@ -417,32 +418,8 @@ class CommentDeleteView(DeleteView):
             return HttpResponseRedirect(self.get_success_url())
 
 
-## View handling voting
 
 
-@login_required
-@require_POST
-def vote_post(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    vote_type = request.POST.get('vote_type')
-    
-    print(f"Vote received: {vote_type} for post {post_id}")  # Server-side debug print
-    
-    if vote_type == 'upvote':
-        if request.user in post.upvotes.all():
-            post.upvotes.remove(request.user)
-        else:
-            post.upvotes.add(request.user)
-            post.downvotes.remove(request.user)
-    elif vote_type == 'downvote':
-        if request.user in post.downvotes.all():
-            post.downvotes.remove(request.user)
-        else:
-            post.downvotes.add(request.user)
-            post.upvotes.remove(request.user)
-    
-    upvotes = post.upvotes.count()
-    downvotes = post.downvotes.count()
-    print(f"New vote counts: {upvotes} upvotes, {downvotes} downvotes")  # Server-side debug print
-    
-    return JsonResponse({'upvotes': upvotes, 'downvotes': downvotes})
+
+
+

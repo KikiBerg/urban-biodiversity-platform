@@ -34,21 +34,29 @@ class Post(models.Model):
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField(
+        'image', default='placeholder')
     content = models.TextField()   
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)    
-    upvotes = models.ManyToManyField(User, related_name='upvoted_posts', blank=True)
-    downvotes = models.ManyToManyField(User, related_name='downvoted_posts', blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    upvotes = models.ManyToManyField(
+        User, related_name='upvoted_posts', blank=True)
+    downvotes = models.ManyToManyField(
+        User, related_name='downvoted_posts', blank=True)
     is_featured = models.BooleanField(default=False)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='draft')
     excerpt = models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
 
 
     @property
     def total_upvotes(self):
         return self.upvotes.count()
+    
+    #def number_of_likes(self): 
+    # return self.likes.count()
 
 
     @property

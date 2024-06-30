@@ -36,22 +36,9 @@
         {{ detail.content | safe }}
     </article>
 
-    <!-- Post voting -->
-    <div class="post-votes">
-        <button class="vote-btn upvote" data-post-id="{{ detail.id }}" data-vote-type="upvote">
-            <i class="fas fa-thumbs-up"></i> <span class="upvote-count">{{ upvotes_count }}</span>
-        </button>
-        <button class="vote-btn downvote" data-post-id="{{ detail.id }}" data-vote-type="downvote">
-            <i class="fas fa-thumbs-down"></i> <span class="downvote-count">{{ downvotes_count }}</span>
-        </button>
-    </div>
-
-
-    <!-- Post footer -->
+    <!-- Comment counting footer -->
     <footer class="post-footer">
-        <div class="post-stats">
-            <span class="post-upvotes"><i class="fas fa-thumbs-up"></i> <span class="upvote-count">{{ detail.total_upvotes }}</span></span>
-            <span class="post-downvotes"><i class="fas fa-thumbs-down"></i> <span class="downvote-count">{{ detail.total_downvotes }}</span></span>
+        <div class="post-stats">            
             <span class="post-comments"><i class="far fa-comments"></i> {{ comment_count }}</span>
         </div>
     </footer>
@@ -105,8 +92,3 @@
 </div>
 {% endblock content %}
 
-
-{% block extra_js %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{% static 'js/voting.js' %}"></script>
-{% endblock %}
