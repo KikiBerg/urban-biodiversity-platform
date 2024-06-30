@@ -2,135 +2,91 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">{{ detail.title }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ detail.author.username }} | {{ detail.created_at }}</p>
-                <p class="post-subtitle"> 
-                    This article can be found in "{{ detail.category.name }}" category.
-                    {% if user.is_authenticated %}
-                        <span>The currect status of this category is: </span>
-                        <span class="badge {% if detail.category.status == 'approved' %}bg-success{% elif detail.category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
-                            {{ detail.category.get_status_display }}
-                        </span>                                       
-                    {% endif %}
-                </p>
-
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <div class="container">
-                    {% if "placeholder" in detail.featured_image.url %}
-                    <img src="{% static 'images/anne-nygard.jpg' %}" class="scale" alt="placeholder image">
-                    {% else %}
-                    <img src="{{ detail.featured_image.url }}" class="scale" alt="{{ detail.title }}">
-                    {% endif %}
-                </div>
-            </div>
+<!-- Main content container -->
+<div class="post-container">
+    <!-- Post header section -->
+    <header class="post-header">
+        <h1 class="post-title">{{ detail.title }}</h1>
+        <div class="post-meta">
+            <span class="post-author">{{ detail.author.username }}</span>
+            <span class="post-date">{{ detail.created_at|date:"F j, Y" }}</span>
+            <span class="post-category">{{ detail.category.name }}</span>
+            {% if user.is_authenticated %}
+                <span class="post-status badge {% if detail.category.status == 'approved' %}bg-success{% elif detail.category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                    {{ detail.category.get_status_display }}
+                </span>
+            {% endif %}
         </div>
-    </div>
-</div>
+    </header>
 
-{% if user.is_authenticated or detail.category.status == 'approved' %}
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <article class="card-text">
-                    {{ detail.content | safe }}
-                </article>
-
-
-                <p>Excerpt: {{ detail.excerpt }}</p>
-                <p>Upvotes: {{ detail.upvotes }} | Downvotes: {{ detail.downvotes }}</p>
-            </div>
-        </div>
-    </div>
-    <!-- Displaying count of comments -->
-    <div class="row">
-        <div class="col-12">
-            <strong class="text-secondary">
-                <i class="far fa-comments"></i> {{ comment_count }}
-            </strong>
-        </div>
-        <div class="col-12">
-            <hr>
-        </div>
+    <!-- Featured image -->
+    <div class="post-image">
+        {% if "placeholder" in detail.featured_image.url %}
+        <img src="{% static 'images/anne-nygard.jpg' %}" alt="placeholder image">
+        {% else %}
+        <img src="{{ detail.featured_image.url }}" alt="{{ detail.title }}">
+        {% endif %}
     </div>
 
-    <!-- Displaying Comments -->
-    <div class="row">
-        <div class="col-md-8 card mb-4 mt-3">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                <!-- Loop through each comment in comments -->
-                {% for comment in comments %}
-                <!-- Display comment based on approval status and user authentication -->
+    {% if user.is_authenticated or detail.category.status == 'approved' %}
+    <!-- Post content -->
+    <article class="post-content">
+        {{ detail.content | safe }}
+    </article>
 
-                <div
-                    class="p-2 comments 
-                    {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
-                    <p class="font-weight-bold"> {{ comment.author.username }}
-                        <span class="font-weight-normal">{{ comment.created_at }}</span> wrote:
-                    </p>
-                    <div id="comment{{ comment.id }}"> {{ comment.content | linebreaks }}
-                    </div>
-
-                    <!-- Display approval message for the author of the comment -->
-                    {% if not comment.approved and comment.author == user %}
-                    <p class="approval"> This comment is awaiting approval</p>
-                    {% endif %}
-
-                    {% if user.is_authenticated and comment.author == user %}
-
-                    <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}"
-                        class="btn btn-delete">Delete</a>
-
-                    <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}"
-                        class="btn btn-edit">Edit</a>
-
-                    {% endif %}
-                </div>
-                <!-- End of for loop -->
-                {% endfor %}
-            </div>
+    <!-- Post footer -->
+    <footer class="post-footer">
+        <div class="post-stats">
+            <span class="post-upvotes"><i class="fas fa-thumbs-up"></i> {{ detail.upvotes }}</span>
+            <span class="post-downvotes"><i class="fas fa-thumbs-down"></i> {{ detail.downvotes }}</span>
+            <span class="post-comments"><i class="far fa-comments"></i> {{ comment_count }}</span>
         </div>
+    </footer>
 
-        <!-- Creating New Comments -->
-        <div class="col-md-4 card mb-4 mt-3">
-            <div class="card-body">
-                {% if user.is_authenticated %}
-                <h4>Leave a comment:</h4>
-                <p>Posting as: {{ user.username }}</p>
-                <form id="commentForm" method="post" style="margin-top: 1.5em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
-                {% else %}
-                <p>Log in to leave a comment</p>
-                {% endif %}
+    <!-- Comments section -->
+    <section class="comments-section">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+        <div class="comment {% if not comment.approved and comment.author == user %}pending{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
+            <div class="comment-meta">
+                <span class="comment-author">{{ comment.author.username }}</span>
+                <span class="comment-date">{{ comment.created_at|date:"F j, Y" }}</span>
             </div>
+            <div class="comment-content">
+                {{ comment.content | linebreaks }}
+            </div>
+            {% if not comment.approved and comment.author == user %}
+            <p class="comment-pending">This comment is awaiting approval</p>
+            {% endif %}
+            {% if user.is_authenticated and comment.author == user %}
+            <div class="comment-actions">
+                <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}" class="btn btn-edit">Edit</a>
+                <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}" class="btn btn-delete">Delete</a>
+            </div>
+            {% endif %}
         </div>
-    </div>
-</div>
-{% else %}
-<div class="container">
+        {% endfor %}
+    </section>
+
+    <!-- Comment form -->
+    <section class="comment-form">
+        <h2>Leave a comment</h2>
+        {% if user.is_authenticated %}
+        <p>Posting as: {{ user.username }}</p>
+        <form id="commentForm" method="post">
+            {{ comment_form | crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-submit">Submit</button>
+        </form>
+        {% else %}
+        <p>Log in to leave a comment</p>
+        {% endif %}
+    </section>
+    {% else %}
     <div class="alert alert-warning" role="alert">
         This post belongs to a category that is not yet approved. Please register and log in to view its content.
     </div>
+    {% endif %}
 </div>
-{% endif %}
-
 {% endblock content %}
-
-{% block extras %}
-<script src="{% static 'js/comments.js' %}"></script>
-{% endblock %}

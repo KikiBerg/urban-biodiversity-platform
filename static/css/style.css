@@ -1,5 +1,18 @@
+/* -----------------------------------------------------------Urban biodiversity theme colors */
+
+:root {
+    --color-primary: #535832;
+    --color-secondary: #95A968;
+    --color-accent: #BF9E49;
+    --color-text: #444;
+    --color-background: #f4f7f4;
+}
+
 body {
-    background-color: #9E9797;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: "Playfair Display", serif;
+    line-height: 1.6;    
 }
 
 
@@ -7,7 +20,7 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #444;
+    color: var(--color-text);
 }
 
 
@@ -184,7 +197,7 @@ body {
 }
 
 .blog-post-title a {
-    color: #444;
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -206,7 +219,7 @@ body {
 .category-tag {
     display: inline-block;
     background-color: #f0f0f0;
-    color: #444;
+    color: var(--color-text);
     padding: 0.2rem 0.5rem;
     margin-right: 0.5rem;
     font-size: 0.8rem;
@@ -214,7 +227,7 @@ body {
 }
 
 .blog-post-excerpt {
-    color: #444;
+    color: var(--color-text);
     line-height: 1.6;
 }
 
@@ -274,7 +287,7 @@ body {
 }
 
 .intro-section .card-text {
-    color: #444;
+    color: var(--color-text);
     line-height: 1.6;
 }
 
@@ -290,4 +303,135 @@ body {
 .intro-section .fas {
     margin-right: 0.5rem;
     color: #95A968;
+}
+
+/* -----------------------------------------------------------Post detail styles */
+
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.post-title {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+.post-meta > span {
+    margin-right: 1rem;
+}
+
+.post-image {
+    margin-bottom: 2rem;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;    
+    border-radius: 15%;
+}
+
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.post-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-secondary);
+}
+
+.post-stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.post-stats span {
+    color: var(--color-secondary);
+}
+
+.comments-section {
+    margin-top: 3rem;
+}
+
+.comment {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-meta {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.comment-content {
+    font-size: 1rem;
+}
+
+.comment-pending {
+    color: var(--color-accent);
+    font-style: italic;
+}
+
+.comment-actions {
+    margin-top: 0.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn-submit {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.comment-form {
+    margin-top: 3rem;
+}
+
+.alert-warning {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
 }
