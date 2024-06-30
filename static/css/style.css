@@ -6,6 +6,11 @@
     --color-accent: #BF9E49;
     --color-text: #444;
     --color-background: #f4f7f4;
+    --color-foliage: #4CAF50;
+    --color-bark: #795548;
+    --color-sky: #03A9F4;
+    --color-earth: #8D6E63;
+    --color-delete: #d9534f;
 }
 
 body {
@@ -162,7 +167,7 @@ body {
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: var(--color-delete);
 }
 
 .btn-like:hover,
@@ -404,7 +409,7 @@ body {
 }
 
 .btn-delete {
-    background-color: #d9534f;
+    background-color: var(--color-delete);
     color: white;
 }
 
@@ -432,32 +437,85 @@ body {
 }
 
 
-/* -----------------------------------------------------------Voting styles */
+/* -----------------------------------------------------------Commenting styles */
 
-.post-votes {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+.comments-section {
+    margin-top: 30px;
 }
 
-.vote-btn {
-    background-color: #f0f0f0;
+.comment {
+    background-color: #F9F9F9;
+    border-left: 4px solid var(--color-sky);
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.comment-approved {
+    border-left-color: var(--color-foliage);
+}
+
+.comment-unapproved {
+    border-left-color: var(--color-accent);
+    opacity: 0.7;
+}
+
+.comment-meta {
+    color: var(--color-earth);
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.comment-content {
+    color: var(--color-text);
+}
+
+.comment-pending {
+    color: var(--color-accent);
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.comment-actions {
+    margin-top: 10px;
+}
+
+.btn {
+    background-color: var(--color-sky);
     border: none;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    cursor: pointer;
     border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 8px 12px;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
-.vote-btn:hover {
-    background-color: #e0e0e0;
+.btn:hover {
+    background-color: #0288D1;
 }
 
-.vote-btn.upvote {
-    color: var(--color-secondary);
+.btn-edit {
+    background-color: var(--color-foliage);
 }
 
-.vote-btn.downvote {
-    color: #d9534f;
+.btn-edit:hover {
+    background-color: #388E3C;
+}
+
+.btn-delete {
+    background-color: var(--color-delete);
+}
+
+.btn-delete:hover {
+    background-color: #D32F2F;
+}
+
+.btn-submit {
+    background-color: var(--color-foliage);
+}
+
+.btn-submit:hover {
+    background-color: #388E3C;
 }

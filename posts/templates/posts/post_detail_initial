@@ -47,7 +47,8 @@
     <section class="comments-section">
         <h2>Comments</h2>
         {% for comment in comments %}
-        <div class="comment {% if comment.approved %}comment-approved{% else %}comment-unapproved{% endif %} {% if not comment.approved and comment.author == user %}pending{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
+        <div
+            class="comment {% if not comment.approved and comment.author == user %}pending{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
             <div class="comment-meta">
                 <span class="comment-author">{{ comment.author.username }}</span>
                 <span class="comment-date">{{ comment.created_at|date:"F j, Y" }}</span>
@@ -55,13 +56,14 @@
             <div class="comment-content">
                 {{ comment.content | linebreaks }}
             </div>
-            {% if not comment.approved %}
+            {% if not comment.approved and comment.author == user %}
             <p class="comment-pending">This comment is awaiting approval</p>
             {% endif %}
             {% if user.is_authenticated and comment.author == user %}
             <div class="comment-actions">
                 <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}" class="btn btn-edit">Edit</a>
-                <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}" class="btn btn-delete">Delete</a>
+                <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}"
+                    class="btn btn-delete">Delete</a>
             </div>
             {% endif %}
         </div>
