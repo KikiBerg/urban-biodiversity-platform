@@ -13,9 +13,10 @@
             <span class="post-date">{{ detail.created_at|date:"F j, Y" }}</span>
             <span class="post-category">{{ detail.category.name }}</span>
             {% if user.is_authenticated %}
-                <span class="post-status badge {% if detail.category.status == 'approved' %}bg-success{% elif detail.category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
-                    {{ detail.category.get_status_display }}
-                </span>
+            <span
+                class="post-status badge {% if detail.category.status == 'approved' %}bg-success{% elif detail.category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                {{ detail.category.get_status_display }}
+            </span>
             {% endif %}
         </div>
     </header>
@@ -35,11 +36,22 @@
         {{ detail.content | safe }}
     </article>
 
+    <!-- Post voting -->
+    <div class="post-votes">
+        <button class="vote-btn upvote" data-post-id="{{ detail.id }}" data-vote-type="upvote">
+            <i class="fas fa-thumbs-up"></i> <span class="upvote-count">{{ upvotes_count }}</span>
+        </button>
+        <button class="vote-btn downvote" data-post-id="{{ detail.id }}" data-vote-type="downvote">
+            <i class="fas fa-thumbs-down"></i> <span class="downvote-count">{{ downvotes_count }}</span>
+        </button>
+    </div>
+
+
     <!-- Post footer -->
     <footer class="post-footer">
         <div class="post-stats">
-            <span class="post-upvotes"><i class="fas fa-thumbs-up"></i> {{ detail.upvotes }}</span>
-            <span class="post-downvotes"><i class="fas fa-thumbs-down"></i> {{ detail.downvotes }}</span>
+            <span class="post-upvotes"><i class="fas fa-thumbs-up"></i> <span class="upvote-count">{{ detail.total_upvotes }}</span></span>
+            <span class="post-downvotes"><i class="fas fa-thumbs-down"></i> <span class="downvote-count">{{ detail.total_downvotes }}</span></span>
             <span class="post-comments"><i class="far fa-comments"></i> {{ comment_count }}</span>
         </div>
     </footer>
@@ -48,7 +60,8 @@
     <section class="comments-section">
         <h2>Comments</h2>
         {% for comment in comments %}
-        <div class="comment {% if not comment.approved and comment.author == user %}pending{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
+        <div
+            class="comment {% if not comment.approved and comment.author == user %}pending{% elif not comment.approved and not user.is_superuser %}d-none{% endif %}">
             <div class="comment-meta">
                 <span class="comment-author">{{ comment.author.username }}</span>
                 <span class="comment-date">{{ comment.created_at|date:"F j, Y" }}</span>
@@ -62,7 +75,8 @@
             {% if user.is_authenticated and comment.author == user %}
             <div class="comment-actions">
                 <a href="{% url 'comment_edit' slug=detail.slug comment_id=comment.id %}" class="btn btn-edit">Edit</a>
-                <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}" class="btn btn-delete">Delete</a>
+                <a href="{% url 'comment_delete' slug=detail.slug comment_id=comment.id %}"
+                    class="btn btn-delete">Delete</a>
             </div>
             {% endif %}
         </div>
@@ -90,3 +104,9 @@
     {% endif %}
 </div>
 {% endblock content %}
+
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/voting.js' %}"></script>
+{% endblock %}

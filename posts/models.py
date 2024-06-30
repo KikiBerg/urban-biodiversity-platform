@@ -38,12 +38,22 @@ class Post(models.Model):
     content = models.TextField()   
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)    
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
+    upvotes = models.ManyToManyField(User, related_name='upvoted_posts', blank=True)
+    downvotes = models.ManyToManyField(User, related_name='downvoted_posts', blank=True)
     is_featured = models.BooleanField(default=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     excerpt = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+
+
+    @property
+    def total_upvotes(self):
+        return self.upvotes.count()
+
+
+    @property
+    def total_downvotes(self):
+        return self.downvotes.count()
 
 
     class Meta:

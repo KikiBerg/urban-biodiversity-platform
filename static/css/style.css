@@ -335,7 +335,7 @@ body {
 .post-image img {
     width: 100%;
     height: auto;    
-    border-radius: 15%;
+    border-radius: 2%;
 }
 
 .post-content {
@@ -429,4 +429,35 @@ body {
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
+}
+
+
+/* -----------------------------------------------------------Voting styles */
+
+.post-votes {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.vote-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.vote-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.vote-btn.upvote {
+    color: var(--color-secondary);
+}
+
+.vote-btn.downvote {
+    color: #d9534f;
 }

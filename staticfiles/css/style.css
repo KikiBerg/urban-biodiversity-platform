@@ -11,7 +11,7 @@
 body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: "Merriweather", serif;
+    font-family: "Merriweather", serif;    
     line-height: 1.6;    
 }
 
@@ -257,7 +257,7 @@ body {
 
 .page-item .page-link:hover {
     background-color: transparent;
-    color: #0056b3;
+    color: var(--color-secondary);
 }
 
 .page-item.disabled .page-link {
@@ -269,19 +269,14 @@ body {
 /* -----------------------------------------------------------Intro section styles */
 
 .intro-section .card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    background: rgba(149, 169, 104, 0.8)
-    
-}
-
-.intro-section .card:hover {
-    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    border: none;   
+    transition: transform 0.3s ease;
+    background: rgba(149, 169, 104, 0.8)    
 }
 
 .intro-section .card-title {
-    color: #95A968;
+    color: var(--color-secondary);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -302,7 +297,7 @@ body {
 
 .intro-section .fas {
     margin-right: 0.5rem;
-    color: #95A968;
+    color: var(--color-secondary);
 }
 
 /* -----------------------------------------------------------Post detail styles */
@@ -339,8 +334,8 @@ body {
 
 .post-image img {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
+    height: auto;    
+    border-radius: 2%;
 }
 
 .post-content {
@@ -434,4 +429,35 @@ body {
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
+}
+
+
+/* -----------------------------------------------------------Voting styles */
+
+.post-votes {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.vote-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.vote-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.vote-btn.upvote {
+    color: var(--color-secondary);
+}
+
+.vote-btn.downvote {
+    color: #d9534f;
 }

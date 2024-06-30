@@ -1,10 +1,12 @@
+import logging
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.db.models import Q
 
 # Import Django's authentication mixins to ensure that users are logged in and have the required permissions
@@ -51,6 +53,8 @@ class PostDetailView(DetailView):
         Add additional context data for rendering the post detail page
         """
         context = super().get_context_data(**kwargs)
+        context['upvotes_count'] = self.object.upvotes.count()
+        context['downvotes_count'] = self.object.downvotes.count()
         post = self.get_object()
 
         if self.request.user.is_superuser:
@@ -413,6 +417,32 @@ class CommentDeleteView(DeleteView):
             return HttpResponseRedirect(self.get_success_url())
 
 
+## View handling voting
 
 
-
+@login_required
+@require_POST
+def vote_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    vote_type = request.POST.get('vote_type')
+    
+    print(f"Vote received: {vote_type} for post {post_id}")  # Server-side debug print
+    
+    if vote_type == 'upvote':
+        if request.user in post.upvotes.all():
+            post.upvotes.remove(request.user)
+        else:
+            post.upvotes.add(request.user)
+            post.downvotes.remove(request.user)
+    elif vote_type == 'downvote':
+        if request.user in post.downvotes.all():
+            post.downvotes.remove(request.user)
+        else:
+            post.downvotes.add(request.user)
+            post.upvotes.remove(request.user)
+    
+    upvotes = post.upvotes.count()
+    downvotes = post.downvotes.count()
+    print(f"New vote counts: {upvotes} upvotes, {downvotes} downvotes")  # Server-side debug print
+    
+    return JsonResponse({'upvotes': upvotes, 'downvotes': downvotes})
