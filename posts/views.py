@@ -5,12 +5,13 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 # Import Django's authentication mixins to ensure that users are logged in and have the required permissions
 #from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Post, Category, Comment
-from .forms import PostForm, CommentForm, CategoryForm
+from .forms import PostForm, CommentForm, CategoryForm, CategorySearchForm
 from .decorators import superuser_or_creator_required
 
 
@@ -105,12 +106,27 @@ class CategoryListView(ListView):
 
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
+        queryset = Category.objects.all() if self.request.user.is_authenticated else Category.objects.filter(status='approved')
+
+        form = CategorySearchForm(self.request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['q']
+            if query:
+                queryset = queryset.filter(
+                    Q(name__icontains=query) | Q(description__icontains=query)
+                )
+        
+        return queryset
+
+
+
+
+        #if self.request.user.is_authenticated:
             # Authenticated users can see all categories
-            return Category.objects.all()
-        else:
+            #return Category.objects.all()
+        #else:
             # Non-authenticated users can only see approved categories
-            return Category.objects.filter(status='approved')
+           # return Category.objects.filter(status='approved')
 
 
     def get_context_data(self, **kwargs):
@@ -119,6 +135,7 @@ class CategoryListView(ListView):
         """
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
+        context['form'] = CategorySearchForm(self.request.GET)
         return context
 
 

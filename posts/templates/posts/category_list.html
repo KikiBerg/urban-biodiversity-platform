@@ -7,13 +7,21 @@
 <div class="container mt-4">  
   <h1 class="mb-4">Categories</h1>
 
+  <!-- Search Bar -->
+  <form class="mb-4" method="get">
+    {% csrf_token %}
+    <div class="input-group">
+      {{ form.q }}
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </form>
+
   {% if user.is_authenticated %}
     <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Add Category</a>
   {% else %} 
   <p>You are viewing approved categories. Please register or login to manage your own categories.</p>
   {% endif %}
-  
-  
+    
   
   <div class="list-group">
     {% for category in categories %}

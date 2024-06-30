@@ -55,3 +55,14 @@ class CategoryForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if user and user.has_perm('posts.can_manage_categories'):
             self.fields['status'] = forms.ChoiceField(choices=STATUS_CATEGORIES)
+
+
+class CategorySearchForm(forms.Form):
+    """
+    Form for searching categories.    
+    """
+    q = forms.CharField(
+        required=False,
+        label='Search',
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search categories'})
+    )

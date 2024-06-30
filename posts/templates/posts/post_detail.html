@@ -18,7 +18,7 @@
                         <span>The currect status of this category is: </span>
                         <span class="badge {% if detail.category.status == 'approved' %}bg-success{% elif detail.category.status == 'rejected' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
                             {{ detail.category.get_status_display }}
-                        </span>
+                        </span>                                       
                     {% endif %}
                 </p>
 
