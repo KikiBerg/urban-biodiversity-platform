@@ -79,7 +79,8 @@
             <button type="submit" class="btn btn-submit">Submit</button>
         </form>
         {% else %}
-        <p>Log in to leave a comment</p>
+        <p class="text-center m-3">You are not signed in at the moment. <br>Sign in <a
+            href="{% url 'account_login' %}">here</a> to leave a comment.</p>        
         {% endif %}
     </section>
     {% else %}

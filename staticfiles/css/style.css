@@ -359,6 +359,7 @@ body {
     color: var(--color-secondary);
 }
 
+/* -----------------------------------------------------------Post detail styles - Comments section */
 .comments-section {
     margin-top: 3rem;
 }

@@ -33,12 +33,14 @@
       </div>
       <div class="d-flex align-items-center">
         {% if user.is_authenticated %}
-        <span class="badge me-3 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
+        <span
+          class="badge me-3 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
           {{ category.get_status_display }}
         </span>
         {% if user.is_superuser or category.created_by == user %}
         <div class="btn-group" role="group">
-          <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i> Edit</a>
+          <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i
+              class="fas fa-edit"></i> Edit</a>
           <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-delete">Delete</a>
         </div>
         {% endif %}

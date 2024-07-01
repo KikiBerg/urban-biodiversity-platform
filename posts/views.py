@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, Http404
 from django.db.models import Q
 
 
@@ -107,26 +107,28 @@ class CategoryListView(ListView):
 
     def get_queryset(self):
         user = self.request.user
+        # Determine the base queryset based on user type
         if user.is_superuser:
-            # Superusers can see all categories
             queryset = Category.objects.all()
         elif user.is_authenticated:
-            # Authenticated users can see approved categories
-            # and their own pending/rejected categories
             queryset = Category.objects.filter(
                 Q(status='approved') | Q(created_by=user)
             )
         else:
-            # Unauthenticated users can only see approved categories
             queryset = Category.objects.filter(status='approved')
 
+        # Apply search filter if present
         form = CategorySearchForm(self.request.GET)
         if form.is_valid():
             query = form.cleaned_data['q']
             if query:
                 queryset = queryset.filter(
                     Q(name__icontains=query) | Q(description__icontains=query)
-                )        
+                )
+        # Check if the queryset is empty after all filters
+        if not queryset.exists():
+            raise Http404("No categories found")
+
         return queryset
 
 
