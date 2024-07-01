@@ -3,103 +3,119 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="container mt-4">
-  <h1 class="mb-4">Categories</h1>
-  <!-- Search Bar -->
-  <form class="mb-4" method="get">
-    {% csrf_token %}
-    <div class="input-group">
-      {{ form.q }}
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
-    </div>
-  </form>
-  {% if user.is_authenticated %}
-  <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Category</a>
-  {% else %}
-  <p>You are viewing approved categories. Please register or login to manage your own categories.</p>
-  {% endif %}
-  <div class="list-group">
-    {% for category in categories %}
-    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-      <div class="flex-grow-1 me-3">
-        {% if category.status == 'approved' or user.is_superuser or category.created_by == user %}
-        <a href="{% url 'category_post_list' category.pk %}" class="text-decoration-none">
-          <h5 class="mb-1">{{ category.name }}</h5>
-          <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
-        </a>
-        {% else %}
-        <h5 class="mb-1">{{ category.name }}</h5>
-        <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
-        {% endif %}
-      </div>
-      <div class="d-flex align-items-center">
-        {% if user.is_authenticated %}
-        <span
-          class="badge me-3 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
-          {{ category.get_status_display }}
-        </span>
-        {% if user.is_superuser or category.created_by == user %}
-        <div class="btn-group" role="group">
-          <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-outline-secondary"><i
-              class="fas fa-edit"></i> Edit</a>
-          <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-delete">Delete</a>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="mb-4 text-center">Categories</h1>
+      <!-- Search Bar -->
+      <form class="mb-4 search-form" method="get">
+        {% csrf_token %}
+        <div class="input-group input-group-sm">
+          <div class="flex-grow-1">
+            {{ form.q }}
+          </div>
+          <span>
+            <button class="btn btn-sm btn-outline-secondary">
+              <i class="fas fa-search"></i>
+            </button>
+          </span>          
+        </div>
+      </form>
+      {% if user.is_authenticated %}
+      <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Category</a>
+      {% else %}
+      <p class="text-center">You are viewing approved categories. Please register or login to manage your own categories.</p>
+      {% endif %}
+      <div class="list-group">
+        {% for category in categories %}
+        <div class="list-group-item list-group-item-action">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-8">
+              {% if category.status == 'approved' or user.is_superuser or category.created_by == user %}
+              <a href="{% url 'category_post_list' category.pk %}" class="text-decoration-none">
+                <h5 class="mb-1">{{ category.name }}</h5>
+                <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
+              </a>
+              {% else %}
+              <h5 class="mb-1">{{ category.name }}</h5>
+              <p class="mb-1 text-muted">{{ category.description|truncatewords:20 }}</p>
+              {% endif %}
+            </div>
+            <div class="col-12 col-md-4 mt-2 mt-md-0">
+              <div class="d-flex justify-content-start justify-content-md-end align-items-center">
+                {% if user.is_authenticated %}
+                <span class="badge me-2 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
+                  {{ category.get_status_display }}
+                </span>
+                {% if user.is_superuser or category.created_by == user %}
+                <div class="btn-group btn-group-sm" role="group">
+                  <a href="{% url 'category_update' category.pk %}" class="btn btn-outline-secondary btn-sm" style="width: 80px;">
+                    <i class="fas fa-edit"></i><span class="d-none d-md-inline"> Edit</span>
+                  </a>
+                  <a href="{% url 'category_delete' category.pk %}" class="btn btn-delete btn-sm" style="width: 80px;">
+                    <i class="fas fa-eraser"></i><span class="d-none d-md-inline"> Delete</span>
+                  </a>
+                </div>
+                {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if category.status != 'approved' and category.created_by == user %}
+        <div class="alert alert-info" role="alert">
+          This category is awaiting approval.
         </div>
         {% endif %}
-        {% endif %}
+        {% empty %}
+        <div class="alert alert-info" role="alert">
+          No categories found.
+        </div>
+        {% endfor %}
       </div>
+      <!-- Pagination & page counting -->
+      {% if is_paginated %}
+      <nav aria-label="Page navigation" class="mt-4">
+        <!-- Page count information -->
+        <p class="text-center mb-2">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </p>
+
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo; Previous</span>
+          </li>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+          <li class="page-item active">
+            <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
+          </li>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next &raquo;</span>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
     </div>
-    {% if category.status != 'approved' and category.created_by == user %}
-    <div class="alert alert-info" role="alert">
-      This category is awaiting approval.
-    </div>
-    {% endif %}
-    {% empty %}
-    <div class="alert alert-info" role="alert">
-      No categories found.
-    </div>
-    {% endfor %}
   </div>
-  <!-- Pagination & page counting -->
-  {% if is_paginated %}
-  <nav aria-label="Page navigation" class="mt-4">
-    <!-- Page count information -->
-    <p class="text-center mb-2">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-    </p>
-
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
-      </li>
-      {% else %}
-      <li class="page-item disabled">
-        <span class="page-link">&laquo; Previous</span>
-      </li>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-      <li class="page-item active">
-        <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
-      </li>
-      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-      </li>
-      {% endif %}
-      {% endfor %}
-
-      {% if page_obj.has_next %}
-      <li class="page-item">
-        <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
-      </li>
-      {% else %}
-      <li class="page-item disabled">
-        <span class="page-link">Next &raquo;</span>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
 </div>
 {% endblock %}
