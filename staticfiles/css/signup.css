@@ -1,0 +1,16 @@
+.signup .form-group p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .signup .form-group label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .signup .form-group input {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
