@@ -5,7 +5,7 @@
     --color-secondary: #95A968;
     --color-accent: #f0c965;
     --color-text: #444;
-    --color-background: #f4f7f4;
+    --color-background: #f0f0f0;
     --color-foliage: #6cb66e;
     --color-bark: #795548;
     --color-sky: #2cb0d8;
@@ -28,6 +28,9 @@ body {
     color: var(--color-text);
 }
 
+.footer-bg {
+    background-color: var(--color-primary);
+}
 
 .red-o {
     color: #E84610;
@@ -41,9 +44,7 @@ body {
     background-color: #fff;
 }
 
-.dark-bg {
-    background-color: #445261;
-}
+
 
 .main-bg {
     background-color: #F9FAFC;
