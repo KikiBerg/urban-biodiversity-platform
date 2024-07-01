@@ -9,13 +9,10 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import HttpResponseRedirect, JsonResponse
 from django.db.models import Q
 
-# Import Django's authentication mixins to ensure that users are logged in and have the required permissions
-#from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm, CategoryForm, CategorySearchForm
 from .decorators import superuser_or_creator_required
-
 
 
 # Create your views here.
@@ -51,11 +48,8 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """
         Add additional context data for rendering the post detail page
-        """        
-
+        """
         context = super().get_context_data(**kwargs)
-        #context['upvotes_count'] = self.object.upvotes.count()
-        #context['downvotes_count'] = self.object.downvotes.count()
         post = self.get_object()
 
         if self.request.user.is_superuser:
@@ -225,7 +219,6 @@ class CategoryUpdateView(UpdateView):
     template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
-    #permission_required = 'posts.can_manage_categories'
 
 
     def form_valid(self, form):
@@ -250,7 +243,6 @@ class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'posts/category_confirm_delete.html'
     success_url = reverse_lazy('category_list')
-    #permission_required = 'posts.can_manage_categories'
 
 
     def delete(self, request, *args, **kwargs):
@@ -318,8 +310,7 @@ class CommentUpdateView(UpdateView):
     """
     model = Comment    
     template_name = 'posts/comment_form.html'
-    success_url = reverse_lazy('index')
-    #fields = ['content', 'status']
+    success_url = reverse_lazy('index')    
     form_class = CommentForm
     pk_url_kwarg = 'comment_id'
 
@@ -416,10 +407,3 @@ class CommentDeleteView(DeleteView):
         else:
             messages.error(request, 'You can only delete your own comments!')
             return HttpResponseRedirect(self.get_success_url())
-
-
-
-
-
-
-

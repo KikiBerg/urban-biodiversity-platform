@@ -54,9 +54,6 @@ class Post(models.Model):
     @property
     def total_upvotes(self):
         return self.upvotes.count()
-    
-    #def number_of_likes(self): 
-    # return self.likes.count()
 
 
     @property

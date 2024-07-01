@@ -6,6 +6,7 @@
     --color-accent: #BF9E49;
     --color-text: #444;
     --color-background: #f4f7f4;
+    --color-blue: #8babda;
 }
 
 body {
@@ -250,9 +251,9 @@ body {
 }
 
 .page-item .page-link {
-    color: #188181;
+    color: var(--color-blue);
     border: none;
-    font-weight: bold;
+    font-weight: bold;    
 }
 
 .page-item .page-link:hover {
@@ -432,32 +433,3 @@ body {
 }
 
 
-/* -----------------------------------------------------------Voting styles */
-
-.post-votes {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.vote-btn {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.vote-btn:hover {
-    background-color: #e0e0e0;
-}
-
-.vote-btn.upvote {
-    color: var(--color-secondary);
-}
-
-.vote-btn.downvote {
-    color: #d9534f;
-}
