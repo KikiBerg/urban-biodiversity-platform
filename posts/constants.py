@@ -35,7 +35,7 @@ Possible values:
 """
 
 
-################################## Status choices for comments
+################################## Status choices for categories
 STATUS_CATEGORIES = [
     ('pending', 'Pending'),
     ('approved', 'Approved'),

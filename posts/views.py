@@ -112,7 +112,19 @@ class CategoryListView(ListView):
 
 
     def get_queryset(self):
-        queryset = Category.objects.all() if self.request.user.is_authenticated else Category.objects.filter(status='approved')
+        user = self.request.user
+        if user.is_superuser:
+            # Superusers can see all categories
+            queryset = Category.objects.all()
+        elif user.is_authenticated:
+            # Authenticated users can see approved categories
+            # and their own pending/rejected categories
+            queryset = Category.objects.filter(
+                Q(status='approved') | Q(created_by=user)
+            )
+        else:
+            # Unauthenticated users can only see approved categories
+            queryset = Category.objects.filter(status='approved')
 
         form = CategorySearchForm(self.request.GET)
         if form.is_valid():
@@ -120,19 +132,8 @@ class CategoryListView(ListView):
             if query:
                 queryset = queryset.filter(
                     Q(name__icontains=query) | Q(description__icontains=query)
-                )
-        
+                )        
         return queryset
-
-
-
-
-        #if self.request.user.is_authenticated:
-            # Authenticated users can see all categories
-            #return Category.objects.all()
-        #else:
-            # Non-authenticated users can only see approved categories
-           # return Category.objects.filter(status='approved')
 
 
     def get_context_data(self, **kwargs):
@@ -196,7 +197,6 @@ class CategoryCreateView(CreateView):
     template_name = 'posts/category_form.html'    
     success_url = reverse_lazy('category_list')
     form_class = CategoryForm
-    #permission_required = 'posts.can_manage_categories'
 
 
     def form_valid(self, form):
