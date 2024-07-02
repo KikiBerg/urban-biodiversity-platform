@@ -17,14 +17,13 @@
             <button class="btn btn-sm btn-outline-secondary">
               <i class="fas fa-search"></i>
             </button>
-          </span>
+          </span>          
         </div>
       </form>
       {% if user.is_authenticated %}
       <a href="{% url 'category_create' %}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add Category</a>
       {% else %}
-      <p class="text-center">You are viewing approved categories. Please register or login to manage your own
-        categories.</p>
+      <p class="text-center">You are viewing approved categories. Please register or login to manage your own categories.</p>
       {% endif %}
       <div class="list-group">
         {% for category in categories %}
@@ -44,32 +43,18 @@
             <div class="col-12 col-md-4 mt-2 mt-md-0">
               <div class="d-flex justify-content-start justify-content-md-end align-items-center">
                 {% if user.is_authenticated %}
-                <span id="status-badge-{{ category.pk }}"
-                  class="badge me-2 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
+                <span class="badge me-2 {% if category.status == 'approved' %}status-approved{% elif category.status == 'rejected' %}status-rejected{% else %}status-pending{% endif %}">
                   {{ category.get_status_display }}
-                </span>                
+                </span>
                 {% if user.is_superuser or category.created_by == user %}
                 <div class="btn-group btn-group-sm" role="group">
-                  <a href="{% url 'category_update' category.pk %}" class="btn btn-outline-secondary btn-sm"
-                    style="width: 80px;">
+                  <a href="{% url 'category_update' category.pk %}" class="btn btn-outline-secondary btn-sm" style="width: 80px;">
                     <i class="fas fa-edit"></i><span class="d-none d-md-inline"> Edit</span>
                   </a>
                   <a href="{% url 'category_delete' category.pk %}" class="btn btn-delete btn-sm" style="width: 80px;">
                     <i class="fas fa-eraser"></i><span class="d-none d-md-inline"> Delete</span>
                   </a>
                 </div>
-                {% endif %}
-                <!-- Status update form (only for superusers) -->
-                {% if user.is_superuser %}
-                <form class="status-form ms-2" data-category-id="{{ category.pk }}">
-                  {% csrf_token %}
-                  <select name="status" class="form-select form-select-sm">
-                    {% for status, display in STATUS_CATEGORIES %}
-                    <option value="{{ status }}" {% if category.status == status %}selected{% endif %}>{{ display }}
-                    </option>
-                    {% endfor %}
-                  </select>
-                </form>
                 {% endif %}
                 {% endif %}
               </div>
@@ -133,11 +118,4 @@
     </div>
   </div>
 </div>
-
-{% endblock %}
-
-{% block extra_js %}
-{% if user.is_superuser %}
-<script src="{% static 'js/category_status_update.js' %}"></script>
-{% endif %}
 {% endblock %}

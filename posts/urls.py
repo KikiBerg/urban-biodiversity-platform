@@ -13,7 +13,9 @@ urlpatterns = [
     path('categories/create/', views.CategoryCreateView.as_view(), name='category_create'),
     path('categories/<int:pk>/update/', views.CategoryUpdateView.as_view(), name='category_update'),
     path('categories/<int:pk>/delete/', views.CategoryDeleteView.as_view(), name='category_delete'),
-    path('categories/<int:pk>/posts/', views.CategoryPostListView.as_view(), name='category_post_list'),
+    path('categories/<int:pk>/posts/', views.CategoryPostListView.as_view(), name='category_post_list'),    
+    path('categories/<int:pk>/update_status/', views.update_category_status, name='update_category_status'),
+    
     # Comment URLs
     path('posts/<int:post_id>/comment/new/', views.CommentCreateView.as_view(), name='comment_create'),
     path('post/<slug:slug>/comment/<int:comment_id>/edit/', views.CommentUpdateView.as_view(), name='comment_edit'),

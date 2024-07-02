@@ -1,18 +1,20 @@
 import logging
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.db.models import Q
+import json
 
 
 from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm, CategoryForm, CategorySearchForm
-from .decorators import superuser_or_creator_required
+from .decorators import superuser_or_creator_required, superuser_required
+from .constants import STATUS_CATEGORIES
 
 
 # Create your views here.
@@ -139,6 +141,7 @@ class CategoryListView(ListView):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
         context['form'] = CategorySearchForm(self.request.GET)
+        context['STATUS_CATEGORIES'] = STATUS_CATEGORIES
         return context
 
 
@@ -260,6 +263,23 @@ class CategoryDeleteView(DeleteView):
             return redirect(self.success_url)
         messages.success(self.request, 'Category deleted successfully!')
         return super().delete(request, *args, **kwargs)
+
+
+# View for handling the status update request
+@require_POST
+@superuser_required
+def update_category_status(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    data = json.loads(request.body)
+    status = data.get('status')
+    if status in dict(STATUS_CATEGORIES):
+        category.status = status
+        category.save()
+        return JsonResponse({
+            'success': True,
+            'status_display': category.get_status_display()
+        })
+    return JsonResponse({'success': False}, status=400)
 
 
 class PostCreateView(CreateView):
