@@ -50,7 +50,7 @@
                 </span>                
                 {% if user.is_superuser or category.created_by == user %}
                 <div class="btn-group btn-group-sm" role="group">
-                  <a href="{% url 'category_update' category.pk %}" class="btn btn-outline-secondary btn-sm"
+                  <a href="{% url 'category_update' category.pk %}" class="btn btn-edit btn-sm"
                     style="width: 80px;">
                     <i class="fas fa-edit"></i><span class="d-none d-md-inline"> Edit</span>
                   </a>

@@ -9,6 +9,7 @@
     --color-background-main: #fefeff;    
     --color-bark: #795548;
     --color-sky: #4eb8d8;
+    --color-btn-primary: #1587aa;
     --color-earth: #8D6E63;
     --color-delete: #d9534f;
     --color-white: #ffffff;
@@ -289,7 +290,16 @@ body {
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;    
+    border: none;    
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 0.9em;    
+}
+
+.btn-primary {
+    background-color: var(--color-btn-primary);
+    color: var(--color-white);
 }
 
 .btn-signup,
@@ -377,18 +387,6 @@ body {
 
 .comment-actions {
     margin-top: 10px;
-}
-
-.btn {
-    background-color: var(--color-sky);
-    border: none;
-    border-radius: 4px;
-    color: var(--color-white);
-    cursor: pointer;
-    font-size: 0.9em;
-    padding: 8px 12px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
 /* -----------------------------------------------------------Categories styles */
