@@ -5,12 +5,14 @@
     --color-secondary: #95A968;
     --color-accent: #f0c965;
     --color-text: #444;
-    --color-background: #f0f0f0;
-    --color-foliage: #6cb66e;
+    --color-background: #e4e4e4;
+    --color-background-main: #fefeff;    
     --color-bark: #795548;
-    --color-sky: #2cb0d8;
+    --color-sky: #4eb8d8;
     --color-earth: #8D6E63;
     --color-delete: #d9534f;
+    --color-white: #ffffff;
+    --color-grey: #bbbbbb;
 }
 
 body {
@@ -19,7 +21,6 @@ body {
     font-family: "Merriweather", serif;    
     line-height: 1.6;    
 }
-
 
 .brand {
     font-family: Lato, sans-serif;
@@ -32,22 +33,8 @@ body {
     background-color: var(--color-primary);
 }
 
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-
-
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: var(--color-background-main);
 }
 
 .image-container {
@@ -64,67 +51,10 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
-}
-
-.scale {
-    width: 100%;
-    height: auto;
-}
-
 .author {
-    color: white;
+    color: var(--color-white);
     margin: 4px;
     text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #444;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #444;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
-.post-link {
-    text-decoration: none;
-    color: #444;
-}
-
-.post-link:hover,
-.page-link {
-    color: #E84610;
 }
 
 .post-title {
@@ -132,65 +62,20 @@ body {
     margin-left: 5%;
 }
 
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
-}
-
-.btn-signup,
-.btn-edit {
-    background-color: #188181;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
-
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-}
-
 .btn-delete {
-    color: #fff;
+    color: var(--color-white); 
     background: var(--color-delete);
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
-}
-
-.faded {
-    color: rgb(172, 175, 175);
-}
-
-.approval {
-    color: rgb(222, 146, 168);
+.btn-delete:hover {
+    opacity: 0.9;    
 }
 
 /* -----------------------------------------------------------Posts list styles */
 .blog-post {
     margin-bottom: 3rem;
     padding-bottom: 3rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--color-white);
 }
 
 .blog-post:last-child {
@@ -209,12 +94,12 @@ body {
 }
 
 .blog-post-title a:hover {
-    color: #95A968;
+    color: var(--color-secondary);
 }
 
 .blog-post-meta {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-grey);
     margin-bottom: 0.5rem;
 }
 
@@ -224,7 +109,7 @@ body {
 
 .category-tag {
     display: inline-block;
-    background-color: #f0f0f0;
+    background-color: var(--color-white);
     color: var(--color-text);
     padding: 0.2rem 0.5rem;
     margin-right: 0.5rem;
@@ -256,7 +141,7 @@ body {
 }
 
 .page-item .page-link {
-    color: #188181;
+    color: var(--color-sky);
     border: none;
     font-weight: bold;
 }
@@ -267,7 +152,7 @@ body {
 }
 
 .page-item.disabled .page-link {
-    color: #6c757d;
+    color: var(--color-grey);
     pointer-events: none;
     background-color: transparent;
 }
@@ -311,7 +196,7 @@ body {
 .post-container {
     max-width: 800px;
     margin: 0 auto 20px;
-    background-color: #FFFFFF;
+    background-color: var(--color-background-main);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);    
     padding: 2rem;
@@ -372,7 +257,7 @@ body {
 }
 
 .comment {
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -407,19 +292,15 @@ body {
     transition: background-color 0.3s ease;
 }
 
+.btn-signup,
 .btn-edit {
     background-color: var(--color-secondary);
-    color: white;
-}
-
-.btn-delete {
-    background-color: var(--color-delete);
-    color: white;
+    color: var(--color-white);    
 }
 
 .btn-submit {
     background-color: var(--color-primary);
-    color: white;
+    color: var(--color-white);
     border: none;
     cursor: pointer;
 }
@@ -470,7 +351,7 @@ body {
 }
 
 .comment-approved {
-    border-left-color: var(--color-foliage);
+    border-left-color: var(--color-secondary);
 }
 
 .comment-unapproved {
@@ -502,40 +383,12 @@ body {
     background-color: var(--color-sky);
     border: none;
     border-radius: 4px;
-    color: white;
+    color: var(--color-white);
     cursor: pointer;
     font-size: 0.9em;
     padding: 8px 12px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #0288D1;
-}
-
-.btn-edit {
-    background-color: var(--color-foliage);
-}
-
-.btn-edit:hover {
-    background-color: #388E3C;
-}
-
-.btn-delete {
-    background-color: var(--color-delete);
-}
-
-.btn-delete:hover {
-    background-color: #D32F2F;
-}
-
-.btn-submit {
-    background-color: var(--color-foliage);
-}
-
-.btn-submit:hover {
-    background-color: #388E3C;
 }
 
 /* -----------------------------------------------------------Categories styles */
@@ -545,7 +398,7 @@ body {
 }
 
 .status-approved { 
-    background-color: var(--color-foliage);
+    background-color: var(--color-secondary);
     color: var(--color-text);
 }
 
@@ -558,11 +411,6 @@ body {
     background-color: var(--color-accent);
     color: var(--color-text);
 }
-
-
-
-
-
 
 /* -----------------------------------------------------------Media queries */
 

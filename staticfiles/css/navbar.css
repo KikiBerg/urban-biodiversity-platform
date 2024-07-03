@@ -1,16 +1,16 @@
-/* -----------------------------------------------------------Urban biodiversity theme colors */
+/* -----------------------------------------------------------Urban biodiversity theme colors - Navbar */
 
 :root {
     --color-primary: #535832;
     --color-secondary: #95A968;
     --color-accent: #f0c965;
     --color-text: #444;
-    --color-background: #f4f7f4;
-    --color-foliage: #6cb66e;
+    --color-background: #e4e4e4; 
     --color-bark: #795548;
-    --color-sky: #2cb0d8;
+    --color-sky: #4eb8d8;
     --color-earth: #8D6E63;
     --color-delete: #d9534f;
+    --color-white: #ffffff;
 }
 
 
@@ -43,7 +43,7 @@
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa;
+    background-color: var(--color-white);
 }
 
 
