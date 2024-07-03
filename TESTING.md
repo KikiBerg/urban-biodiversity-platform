@@ -39,7 +39,7 @@ I utilised Chrome developer tools whilst building to pinpoint and troubleshoot a
 #### CI Python Linter
 
 File | Screenshot | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | 
 | about/admin.py | ![screenshot](documentation/testing/validation/val-pl-about-admin.png) | Passed. No warnings or errors |
 | about/apps.py | ![screenshot](documentation/testing/validation/val-pl-about-apps.png) | Passed. No warnings or errors |
 | about/forms.py | ![screenshot](documentation/testing/validation/val-pl-about-forms.png) | Passed. No warnings or errors |
