@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class About(models.Model):
+    """
+    Stores a single about me text
+    """
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -15,6 +18,9 @@ class About(models.Model):
 
 
 class ContactUs(models.Model):
+    """
+    Stores a single contact request message
+    """
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()
