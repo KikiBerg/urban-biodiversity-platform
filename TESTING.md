@@ -196,8 +196,13 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Posts page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Post Title Link | Yes | Click on a post title link | User is redirected to the post detail page | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
-
+| Posts List | Yes | Click on "Posts" in the navigation bar | User is directed to the posts list page | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist.png)|
+| Post Title Link | Yes | Click on a post title link | User is redirected to the post detail page of that post | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-titlelink.png)|
+| Post Metadata | Yes | Navigate to the posts page | The author & last updated date are displayed below the title. | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-meta.png)|
+| Post Excerpt | Yes | Navigate to the posts page | The excerpt of the post is displayed below the metadata. | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-excerpt.png)|
+| Pagination - Page Links  | Yes | Navigate through the page links in the pagination section |  The correct page of posts is displayed when clicking on each page number  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-pagelinks.png)|
+| Pagination - First Page | Yes | Navigate to the Posts page, ensure the first page is displayed |  The pagination "cancels" the "Previous" button & activates (blue color) the "Next" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-first.png)|
+| Pagination - Last Page | Yes | Navigate to the Posts page, ensure the last page is displayed |  The pagination "cancels" the "Next" button & activates (blue color) the "Previous" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-last.png)|
 
 #### Posts detail page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
