@@ -38,6 +38,7 @@ I utilised Chrome developer tools whilst building to pinpoint and troubleshoot a
 
 #### CI Python Linter
 
+**`about app`**
 File | Screenshot | Notes |
 | --- | --- | --- | 
 | about/admin.py | ![screenshot](documentation/testing/validation/val-pl-about-admin.png) | Passed. No warnings or errors |
@@ -46,6 +47,10 @@ File | Screenshot | Notes |
 | about/models.py | ![screenshot](documentation/testing/validation/val-pl-about-models.png) | Passed. No warnings or errors |
 | about/urls.py | ![screenshot](documentation/testing/validation/val-pl-about-urls.png) | Passed. No warnings or errors |
 | about/views.py | ![screenshot](documentation/testing/validation/val-pl-about-views.png) | Passed. No warnings or errors |
+
+**`posts app`**
+File | Screenshot | Notes |
+| --- | --- | --- | 
 | posts/admin.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
 | posts/apps.py | ![screenshot](documentation/testing/validation/val-pl-posts-apps.png) | Passed. No warnings or errors |
 | posts/constants.py | ![screenshot](documentation/testing/validation/val-pl-posts-constants.png) | Passed. No warnings or errors |
@@ -54,6 +59,13 @@ File | Screenshot | Notes |
 | posts/models.py | ![screenshot](documentation/testing/validation/val-pl-posts-models.png) | Passed. No warnings or errors |
 | posts/urls.py | ![screenshot](documentation/testing/validation/val-pl-posts-urls.png) | Passed. No warnings or errors |
 | posts/views.py | ![screenshot](documentation/testing/validation/val-pl-posts-views.png) | Passed. No warnings or errors |
+
+**`ubp`**
+File | Screenshot | Notes |
+| --- | --- | --- | 
+| settings.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
+| urls.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
+| wsgi.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
 
 
 #### W3C HTML Validator
@@ -174,11 +186,10 @@ I have tested my deployed project on two different browsers to check for compati
 
 ### Testing User Stories
 
-Here's a detailed table for testing the various user stories of the project. The aim is to follow up the progression of functionality implementation and testing:
+Here's a detailed table for testing the various user stories of the project. The aim is to follow up the functionality implementation.
 
 | User Story ID | Title | Tested? | Response | Pass/Fail |
 |---------------|-------|---------|----------|-----------|
-
 | #1 | User Registration | Yes | No issues | Pass |
 | #2 | User Registration | Yes | No issues | Pass |
 | #3 | User Registration | Yes | No issues | Pass |

@@ -24,7 +24,7 @@
     <!-- Featured image -->
     <div class="post-image">
         {% if "placeholder" in detail.featured_image.url %}
-        <img src="{% static 'images/anne-nygard.jpg' %}" alt="placeholder image">
+        <img src="{% static 'images/anne-nygard.jpg' %}" alt="{{ detail.title }}">
         {% else %}
         <img src="{{ detail.featured_image.url }}" alt="{{ detail.title }}">
         {% endif %}
@@ -32,9 +32,10 @@
 
     {% if user.is_authenticated or detail.category.status == 'approved' %}
     <!-- Post content -->
-    <article class="post-content">
-        {{ detail.content | safe }}
-    </article>
+    
+    <div class="post-content">
+        {{ detail.content | safe }}        
+    </div>
 
     <!-- Comment counting footer -->
     <footer class="post-footer">

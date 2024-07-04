@@ -33,7 +33,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net','ubp-7ea7f2ca1a6d.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net',
+    'ubp-7ea7f2ca1a6d.herokuapp.com'
+    ]
 
 
 # Application definition
@@ -102,24 +105,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ubp.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
-
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+#CSRF_TRUSTED_ORIGINS = [    
+#    "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
+#    "https://ubp-7ea7f2ca1a6d.herokuapp.com"
+#]
+
 CSRF_TRUSTED_ORIGINS = [    
-    "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
-    "https://ubp-7ea7f2ca1a6d.herokuapp.com"
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com"
 ]
 
 

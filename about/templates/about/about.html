@@ -8,15 +8,15 @@
 
 
 <!-- Main container for the about page content -->
-<section class="container mt-5">
+<div class="container mt-5">
   
   <div class="row justify-content-center">
     <!-- Profile image section -->
      <div class="col-12 text-center mb-4">
       {% if "placeholder" in about.profile_image.url %}
-      <img src="{% static 'images/juanma-clemente-alloza.jpg' %}" width="60%" alt="###" />
+      <img src="{% static 'images/juanma-clemente-alloza.jpg' %}" class="profile-image" alt="{{ about.title }}">
       {% else %}
-      <img src="{{ about.profile_image.url }}" width="60%" alt="{{ about.title }}">
+      <img src="{{ about.profile_image.url }}" class="profile-image" alt="{{ about.title }}">
       {% endif %}
      </div>
      
@@ -30,7 +30,7 @@
       <hr>
 
       <div>
-        <p>{{ about.content | safe }}</p>
+        {{ about.content | safe }}
       </div>
     </article>
   </div>
@@ -45,7 +45,7 @@
 
   <br>  
 
-<!----------------------------------------------------------- ContactUs section -->
+<!-- ContactUs section -->
 
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 border border-4 mb-4 card rounded-100">      
@@ -70,11 +70,9 @@
       </section>
 
     </div>
-  </div>
+  </div>  
 
-  
-
-</section>
+</div>
 
 {% endblock content %}
 
