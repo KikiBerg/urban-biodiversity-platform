@@ -234,6 +234,21 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Categories List | Yes | Click on "Categories" in the navigation bar | User is directed to the categories list page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-catlist.png)|
+| Categories Title & Description | Yes | Direct to the Categories page | You should be able to see the list of categories along with the title and the description of the category below the title | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-title-descr.png)|
+| Categories Title Link | Yes | Click on a category | You are directed to the category postlist page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-title-link.png)|
+| Categories Search form | Yes | Type some search words for a category | If matching, you are directed to a filtered page showing the relevant category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-search.png)|
+| Categories for admin | Yes | Sign in as admin & navigate to the Categories page | You are able to see all categories regardless status | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin.png)|
+| Categories editing for admin | Yes | Click the edit button | You are directed to an update page & can update the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-edit.png)|
+| Categories deleting for admin | Yes | Click the edit button | You are directed to a delete page & can delete the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-delete.png)|
+| Categories status for admin | Yes | Click the dropdown button next to the delete button | You can change the status of the category from the dropdown menu | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-status.png)|
+
+
+
+
+| Pagination - Page Links  | Yes | Navigate through the page links in the pagination section |  The correct page of categories list is displayed when clicking on each page number  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-pagelinks.png)|
+| Pagination - First Page | Yes | Navigate to the Categories page, ensure the first page is displayed |  The pagination "cancels" the "Previous" button & activates (blue color) the "Next" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-first.png)|
+| Pagination - Last Page | Yes | Navigate to the Categories page, ensure the last page is displayed |  The pagination "cancels" the "Next" button & activates (blue color) the "Previous" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-last.png)|
 
 #### Categories post list page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
