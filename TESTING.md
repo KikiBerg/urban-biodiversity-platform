@@ -239,12 +239,14 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Sign Out page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- |
-| User Sign Out | Yes | Click on "Sign Out" | A message asking the user if they're sure they want to sign out appears | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-message.png)|
-| User Sign Out | Yes | Click on "Sign Out" | User is signed out and redirected to the main posts page | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-redirect.png) |
+| Confirmation Text | Yes | Click on "Sign Out" | A message asking the user if they're sure they want to sign out appears | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-message.png)|
+| User Sign Out | Yes | Click on "Sign Out" button | User is signed out and redirected to the main posts page. A message confirming the signing out appears | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-redirect.png) |
 
 #### 404 page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
-| --- | --- | --- | --- | --- | --- | 
+| Error 404 not found (Categories page) | Yes | Search for a random category in the search form | An informative 404 message should appear | Pass | ![screenshot](documentation/testing/fulltesting/ft-404.png)| 
+| Go to Homepage button | Yes | Click the button | User is redirected to the main posts page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-home.png)|
+| Return to Categories button | Yes | Click the button | User is redirected to the categories page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-categ.png)|
 
 
 - - -
