@@ -8,33 +8,13 @@ Return back to the [README.md](README.md) file.
 
 - - -
 
-## CONTENTS
-
-* [AUTOMATED TESTING](#automated-testing)
-  * [Validators](#validators)
-  * [Lighthouse](#lighthouse)
-  * [Responsiveness](#responsiveness)
-  * [Browser Compatibility](#browser-compatibility)
-
-* [MANUAL TESTING](#manual-testing)
-  * [Testing User Stories](#testing-user-stories)
-  * [Full Testing](#full-testing)
-
-* [BUGS](#bugs)    
-
-
-Testing was ongoing throughout the entire process of building the project. 
-I utilised Chrome developer tools whilst building to pinpoint and troubleshoot any issues as I went along and to check responsivity on a variety of different screen sizes and devices.
-
-- - -
-
 ## AUTOMATED TESTING
 
-### Validators
+### Code Validation
 
-[CI Python Linter](https://pep8ci.herokuapp.com/) was used to validate all the Python files.
-[W3C](https://validator.w3.org/) was used to validate the HTML and CSS.
-[JSHint](https://jshint.com/) was used to validate the Javascript.
+- [CI Python Linter](https://pep8ci.herokuapp.com/) was used to validate all the Python files.
+- [W3C](https://validator.w3.org/) was used to validate the HTML and CSS.
+- [JSHint](https://jshint.com/) was used to validate the Javascript.
 
 #### CI Python Linter
 
@@ -118,6 +98,7 @@ I used Lighthouse within the Chrome Developer Tools to test the performance, acc
 | **Categories delete** | ![screenshot](documentation/testing/lighthouse/lighthouse-categories-delete.png) |
 | **Sign In** | ![screenshot](documentation/testing/lighthouse/lighthouse-signin.png) | 
 | **Sign Up** | ![screenshot](documentation/testing/lighthouse/lighthouse-signup.png) | 
+| **Sign Out** | ![screenshot](documentation/testing/lighthouse/lighthouse-signout.png) |
 | **404** | ![screenshot](documentation/testing/lighthouse/lighthouse-404.png) |
 
 - - -
@@ -199,9 +180,9 @@ Here's a detailed table for testing the various user stories of the project. The
 
 - - -
 
-### Full Testing
+### Defensive Programming
 
-### Navigation Menu
+#### Navigation Menu
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 | Sign In Link | Yes | Click on "Sign In" from the dropdown menu | User is redirected to the Sign In page, displaying the Sign In form. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
@@ -212,54 +193,56 @@ Here's a detailed table for testing the various user stories of the project. The
 | Categories Link | Yes | Click on "Categories" in the navigation bar | User is redirected to the Categories page. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-categories.png)|
 
 
-### Posts page
+#### Posts page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| --- | --- | --- | --- | --- | --- | 
+| Sign In Link | Yes | Click on "Sign In" from the dropdown menu | User is redirected to the Sign In page, displaying the Sign In form. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
 
 
-### Posts detail page
-| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
-| --- | --- | --- | --- | --- | --- | 
-
-
-### About page
+#### Posts detail page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Categories page
+
+#### About page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Categories post list page
+#### Categories page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Categories create page
+#### Categories post list page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Categories update page
+#### Categories create page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Categories delete page
+#### Categories update page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Sign In page
+#### Categories delete page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Sign Up page
+#### Sign In page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 
-### Sign Out page
+#### Sign Up page
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+
+#### Sign Out page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- |
+| User Sign Out | Yes | Click on "Sign Out" | A message asking the user if they're sure they want to sign out appears | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-message.png)|
+| User Sign Out | Yes | Click on "Sign Out" | User is signed out and redirected to the main posts page | Pass | ![screenshot](documentation/testing/fulltesting/ft-signout-redirect.png) |
 
-### 404 page
+#### 404 page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 

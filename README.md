@@ -1,7 +1,8 @@
 <p align="center">
   <img src="documentation/readme/ubp-logo.png" alt="Urban Biodiversity Platform Logo">
 </p>
-<h1 align="center">Welcome to the Urban Biodiversity Platform</h1>
+
+# Welcome to the Urban Biodiversity Platform**
 
 
 Link to live website: [CLICK HERE!](https://ubp-7ea7f2ca1a6d.herokuapp.com/)

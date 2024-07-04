@@ -8,3 +8,4 @@ node_modules/
 .github/
 cloudinary_python.txt
 posts/fixtures
+db.sqlite3
