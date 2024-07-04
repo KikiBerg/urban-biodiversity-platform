@@ -196,12 +196,26 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Posts page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Sign In Link | Yes | Click on "Sign In" from the dropdown menu | User is redirected to the Sign In page, displaying the Sign In form. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
+| Post Title Link | Yes | Click on a post title link | User is redirected to the post detail page | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
 
 
 #### Posts detail page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Page Title | Yes | Navigate to a post detail page | The page title should be the title of the post | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-pagetitle.png) |  
+| Post Featured Image | Yes | Verify a post with a featured image displays the correct image | The featured image is displayed for the post | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-featimage.png) |  
+| Post Metadata | Yes | Navigate to a post detail page | The author, last updated date & category are displayed below the title. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-metadata.png) |
+| Post Content | Yes | Navigate to a post detail page | The full post content is displayed. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-postcontent.png) |
+| Comments Counting | Yes | Navigate to the end of a post content | The number of comments is displayed. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commcounting.png) |
+| New Comment Form | Yes | Register, sign in & navigate to a post detail page | The new comment form is displayed, allowing the logged-in user to submit a comment | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commform.png) |
+| Comment Restrictions for registered users | Yes | Register, sign in & navigate to a post detail page | You should only be able to see the approved comments, marked with a green color. You should be able to see an update & delete button for your own comments. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commrestr-reg.png) |
+| Comment Restrictions for admin | Yes | Sign in as admin | You should be able to see all comments regardless status. The approved should be marked with a green color & the pending should be marked with a yellow color. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commrestr-admin.png) |
+| Comment Restrictions for non-registered users | Yes | Navigate to the comments section at the end of a post detail page | You should be able to see only the approved comments & not have the ability to leave a comment. A card shows that informs you of your auth status and giving you the link to the sign in page | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commrestr-nonreg.png) |
+| Comment Submission for registered users | Yes | Submit a new comment as a logged-in user | A message shows that the comment is submitted & awaiting approval. | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commsub-reg.png) |
+| Comment Submission for admin | Yes | Submit a new comment as admin | Same message as above shows. You should also be able to see your new comment marked with a yellow (appending) color | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-commsub-admin.png) |
+| Comment Update | Yes | Direct to a comment you left as admin or logged in user & click on the update button | A form appears for editing the comment | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-comm-upd-form-admin.png) |
+| Comment Update Message | Yes | As admin or logged in user update your comment in the update form & click on the Update button | A message appears that the comment is updated & waiting approval | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-comm-upd-message-admin.png) |
+| Comment Delete | Yes | Direct to a comment you left as admin or logged in user & click on the delete button | You get directed to a page asking you to confirm the deletion of the comment | Pass | ![screenshot](documentation/testing/fulltesting/ft-postdetail-comm-delete.png) |
 
 
 #### About page
