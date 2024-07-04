@@ -207,6 +207,10 @@ Here's a detailed table for testing the various user stories of the project. The
 #### About page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| About Us Content | Yes | Navigate to the "About Us" page | The full "About Us" content is displayed | Pass | ![screenshot](documentation/testing/fulltesting/ft-about.png)|
+| Contact Us Form | Yes | Scroll down to the Let's Connect form | The Contact Us form is displayed, allowing the user to submit messages to the admins. | Pass | ![screenshot](documentation/testing/fulltesting/ft-about-form.png)|
+| Submit Contact Us Form | Yes | Fill out and click on the submit button | The form is successfully submitted, and a confirmation message is displayed. | Pass | ![screenshot](documentation/testing/fulltesting/ft-about-form-submit.png)|
+
 
 #### Categories page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
@@ -231,6 +235,7 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Sign In page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Sign In form | Yes | Fill out the form with valid data and click the "Sign In" button. | The form is submitted and the user is signed in and redirected to the main posts page. A success message appears. | Pass | ![screenshot](documentation/testing/fulltesting/ft-signin.png)|
 
 #### Sign Up page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
