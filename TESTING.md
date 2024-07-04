@@ -242,11 +242,8 @@ Here's a detailed table for testing the various user stories of the project. The
 | Categories editing for admin | Yes | Click the edit button | You are directed to an update page & can update the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-edit.png)|
 | Categories deleting for admin | Yes | Click the edit button | You are directed to a delete page & can delete the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-delete.png)|
 | Categories status for admin | Yes | Click the dropdown button next to the delete button | You can change the status of the category from the dropdown menu | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-status.png)|
-
-
-
-
-| Pagination - Page Links  | Yes | Navigate through the page links in the pagination section |  The correct page of categories list is displayed when clicking on each page number  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-pagelinks.png)|
+| --- | --- | --- | --- | --- | --- |
+| Pagination - Page Links  | Yes | Navigate through the page links in the pagination section |  The correct page of categories list is displayed when clicking on each page number  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-pag-pagelinks.png)|
 | Pagination - First Page | Yes | Navigate to the Categories page, ensure the first page is displayed |  The pagination "cancels" the "Previous" button & activates (blue color) the "Next" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-first.png)|
 | Pagination - Last Page | Yes | Navigate to the Categories page, ensure the last page is displayed |  The pagination "cancels" the "Next" button & activates (blue color) the "Previous" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-last.png)|
 
@@ -257,6 +254,9 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories create page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Categories Create for admin | Yes | Direct to the Categories page & click on "Add Categories" | The admin is directed to the categories create page & can see a Category Creation form consisting of 3 fields (Name, Description, Status)  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-admin.png)|
+| Categories Create Success for admin | Yes | Create a new category by filling out the fields & click on "Save" | The admin is directed to the categories list page & can see the new category with a message of awaiting approval | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-success-admin.png)|
+| Categories Delete for admin | Yes | Choose a category & click on "Delete" | The admin is directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
 
 #### Categories update page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
