@@ -202,96 +202,67 @@ Here's a detailed table for testing the various user stories of the project. The
 ### Full Testing
 
 ### Navigation Menu
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-| Logout Link  | Yes | Click on "Sign Out" in the navigation bar. | User receives confirmation message and is redirected to the main page | Pass  | ![screenshot](documentation/validation/testing/siginup.JPG)     |
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+| Sign In Link | Yes | Click on "Sign In" from the dropdown menu | User is redirected to the Sign In page, displaying the Sign In form. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signin.png)|
+| Sign Up Link | Yes | Click on "Sign Up" from the dropdown menu | User is redirected to the Sign Up page, displaying the Sign Up form. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signup.png)|
+| Sign Out Link | Yes | Click on "Sign Out" from the dropdown menu (that should now show the user's name) | User is redirected to the Sign Out page, displaying the Sign Out button. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-signout.png)|
+| Posts Link | Yes | Click on "Posts" in the navigation bar | User is redirected to the Posts main page, displaying the list of posts. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-posts.png)|
+| About us Link | Yes | Click on "About us" in the navigation bar | User is redirected to the About page. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-about.png)|
+| Categories Link | Yes | Click on "Categories" in the navigation bar | User is redirected to the Categories page. | Pass |![screenshot](documentation/testing/fulltesting/ft-nav-categories.png)|
+
 
 ### Posts page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | --- | --- | 
+
 
 ### Posts detail page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+
 
 ### About page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Categories page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Categories post list page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Categories create page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Categories update page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Categories delete page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Sign In page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
 
 ### Sign Up page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+
+### Sign Out page
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- |
 
 ### 404 page
-| Feature            | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
-|--------------------|---------|---------------|------------------|-----------|-------|
+| Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
+| --- | --- | --- | --- | --- | --- | 
+
 
 - - -
 

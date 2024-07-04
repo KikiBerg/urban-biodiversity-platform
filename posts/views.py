@@ -472,7 +472,9 @@ class CommentUpdateView(UpdateView):
             self.object = form.save(commit=False)
             self.object.approved = False
             self.object.save()
-            messages.success(self.request, 'Comment Updated!')
+            messages.success(self.request, 'Comment Updated! '
+            'Our admin needs to approve this change first. '
+            'Your updated comment will show again after that approval.')
             return HttpResponseRedirect(self.get_success_url())
         else:
             messages.error(self.request, 'Error updating comment!')

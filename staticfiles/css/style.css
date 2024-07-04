@@ -72,6 +72,13 @@ body {
     opacity: 0.9;    
 }
 
+.profile-image img {    
+    width: 60%;
+    height: auto;    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5%;
+}
+
 /* -----------------------------------------------------------Posts list styles */
 .blog-post {
     margin-bottom: 3rem;
@@ -230,7 +237,7 @@ body {
 .post-image img {
     width: 100%;
     height: auto;    
-    border-radius: 2%;
+    border-radius: 5%;
 }
 
 .post-content {

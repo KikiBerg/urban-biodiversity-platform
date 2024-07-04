@@ -72,11 +72,11 @@ body {
     opacity: 0.9;    
 }
 
-.profile-image {    
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+.profile-image img {    
+    width: 60%;
+    height: auto;    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5%;
 }
 
 /* -----------------------------------------------------------Posts list styles */
