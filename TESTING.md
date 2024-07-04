@@ -63,26 +63,28 @@ File | Screenshot | Notes |
 **`ubp`**
 File | Screenshot | Notes |
 | --- | --- | --- | 
-| settings.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
-| urls.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
-| wsgi.py | ![screenshot](documentation/testing/validation/val-pl-posts-admin.png) | Passed. No warnings or errors |
+| settings.py | ![screenshot](documentation/testing/validation/val-pl-settings.png) | Passed. No warnings or errors |
+| urls.py | ![screenshot](documentation/testing/validation/val-pl-urls.png) | Passed. No warnings or errors |
+| wsgi.py | ![screenshot](documentation/testing/validation/val-pl-wsgi.png) | Passed. No warnings or errors |
 
 
 #### W3C HTML Validator
 
 Page | Validation PDF | Notes |
 | --- | --- | --- |
-| **Posts** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Posts detail** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **About** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Categories** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Categories post list** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Categories create** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Categories update** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Categories delete** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Sign In** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **Sign Up** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
-| **404** | [View PDF](link_to_pdf_on_github_here) | Passed. No warnings or errors |
+| **Posts** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-posts.pdf) | Passed. No warnings or errors |
+| **Posts detail** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-posts-detail.pdf) | Passed. No warnings or errors |
+| **About** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-about.pdf) | Passed. No warnings or errors |
+| **Categories** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories.pdf) | Passed. No warnings or errors |
+| **Categories post list** (category exists) | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories-postlist-exist.pdf) | Passed. No warnings or errors |
+| **Categories post list** (category does not exist) | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories-postlist-not-exist.pdf) | Passed. No warnings or errors |
+| **Categories create** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories-create.pdf) | Passed. No warnings or errors |
+| **Categories update** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories-update.pdf) | Passed. No warnings or errors |
+| **Categories delete** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-categories-delete.pdf) | Passed. No warnings or errors |
+| **Sign In** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-signin.pdf) | Passed. No warnings or errors |
+| **Sign Up** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-signup.pdf) | Passed. No warnings or errors |
+| **Sign Out** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-signout.pdf) | Passed. No warnings or errors |
+| **404** | [View PDF](https://github.com/KikiBerg/urban-biodiversity-platform/blob/main/documentation/testing/validation/val-html-404.pdf) | Passed. No warnings or errors |
 
 #### W3C CSS Validator
 

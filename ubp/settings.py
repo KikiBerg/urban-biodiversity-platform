@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',    
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'django.contrib.sites',
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
-    'crispy_bootstrap5',    
+    'crispy_bootstrap5',
     'cloudinary',
     'django_summernote',
     'posts',
@@ -109,12 +109,12 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-#CSRF_TRUSTED_ORIGINS = [    
-#    "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
-#    "https://ubp-7ea7f2ca1a6d.herokuapp.com"
-#]
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
+#     "https://ubp-7ea7f2ca1a6d.herokuapp.com"
+# ]
 
-CSRF_TRUSTED_ORIGINS = [    
+CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com"
 ]
@@ -125,16 +125,20 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'NumericPasswordValidator',
     },
 ]
 
@@ -168,14 +172,12 @@ CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
 
 cloudinary.config(
-    cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    api_key = os.environ.get('CLOUDINARY_API_KEY'),
-    api_secret = os.environ.get('CLOUDINARY_API_SECRET')
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET')
 )
 
 
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
