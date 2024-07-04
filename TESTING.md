@@ -235,6 +235,9 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Sign Up page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Informative Text | Yes | Click on "Sign Up" in the navbar | A message informing that the user is not signed in appears. The sign up form appears. | Pass | ![screenshot](documentation/testing/fulltesting/ft-signup-info.png)| 
+| Username Field | Yes | Enter a username, fill up the rest of the form and click "Sign Up" | The username is accepted, or an error message is displayed if invalid. | Pass | ![screenshot](documentation/testing/fulltesting/ft-signup-username.png)|
+| Success message | Yes | No action needed | A success message appears confirming that the user has signed up and that they're logged in | Pass | ![screenshot](documentation/testing/fulltesting/ft-signup-success.png)|
 
 #### Sign Out page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
@@ -244,9 +247,10 @@ Here's a detailed table for testing the various user stories of the project. The
 
 #### 404 page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
-| Error 404 not found (Categories page) | Yes | Search for a random category in the search form | An informative 404 message should appear | Pass | ![screenshot](documentation/testing/fulltesting/ft-404.png)| 
-| Go to Homepage button | Yes | Click the button | User is redirected to the main posts page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-home.png)|
-| Return to Categories button | Yes | Click the button | User is redirected to the categories page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-categ.png)|
+| --- | --- | --- | --- | --- | --- |
+| Error 404 not found (Categories page) | Yes | Search for a random category in the search form | An informative 404 message should appear | Pass | ![screenshot](documentation/testing/fulltesting/ft-404.png) | 
+| Go to Homepage button | Yes | Click the button | User is redirected to the main posts page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-home.png) |
+| Return to Categories button | Yes | Click the button | User is redirected to the categories page | Pass | ![screenshot](documentation/testing/fulltesting/ft-404-categ.png) |
 
 
 - - -
