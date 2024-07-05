@@ -256,7 +256,7 @@ Here's a detailed table for testing the various user stories of the project. The
 | --- | --- | --- | --- | --- | --- | 
 | Categories Create for admin | Yes | Direct to the Categories page & click on "Add Categories" | The admin is directed to the categories create page & can see a Category Creation form consisting of 3 fields (Name, Description, Status)  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-admin.png)|
 | Categories Create Success for admin | Yes | Create a new category by filling out the fields & click on "Save" | The admin is directed to the categories list page & can see the new category with a message of awaiting approval | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-success-admin.png)|
-| Categories Delete for admin | Yes | Choose a category & click on "Delete" | The admin is directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
+
 
 #### Categories update page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
@@ -265,6 +265,7 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories delete page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Categories Delete for admin | Yes | Choose a category & click on "Delete" | The admin is directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
 
 #### Sign In page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
