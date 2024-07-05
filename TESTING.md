@@ -238,7 +238,7 @@ Here's a detailed table for testing the various user stories of the project. The
 | Categories Title & Description | Yes | Direct to the Categories page | You should be able to see the list of categories along with the title and the description of the category below the title | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-title-descr.png)|
 | Categories Title Link | Yes | Click on a category | You are directed to the category postlist page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-title-link.png)|
 | Categories Search form | Yes | Type some search words for a category | If matching, you are directed to a filtered page showing the relevant category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-search.png)|
-| Categories for admin | Yes | Sign in as admin & navigate to the Categories page | You are able to see all categories regardless status | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin.png)|
+| Categories for admin | Yes | Sign in as admin & navigate to the Categories page | You are able to see & manage all categories regardless status | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin.png)|
 | Categories for logged in users | Yes | Sign in as registered user & navigate to the Categories page | You are able to see only approved categories & manage your own | Pass | ![screenshot](documentation/testing/fulltesting/ft-catpage-cats-reg.png) |
 | Categories for non registered users | Yes | Navigate to the Categories page | You are only able to see approved categories | Pass | ![screenshot](documentation/testing/fulltesting/ft-catpage-cats-nonreg.png) |
 | Categories editing for admin | Yes | Click the edit button | You are directed to an update page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-edit.png)|
@@ -253,28 +253,26 @@ Here's a detailed table for testing the various user stories of the project. The
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 | Categories post list for posts that belong to a category | Yes | Click on any category | You are directed to the category postlist page & should be able to see the posts that belong to this category if that is true | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-exist.png) |
-| Categories post list for posts that do not belong to a category | Yes | Click on any category | You are directed to the category postlist page & should be able to see a message in blue that informs you of the non existance of posts in this category | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-exist-not.png) |
+| Categories post list for posts that do not belong to a category | Yes | Click on any category | You are directed to the category postlist page & should be able to see a message in blue that informs you of the non existance of posts in this category if that is true | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-exist-not.png) |
 | Categories post list back to categories | Yes | Click on the "Back to Categories" button | You get directed back to the Categories page | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-back.png) |
 
 #### Categories create page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Categories Create for admin | Yes | Direct to the Categories page & click on "Add Categories" | The admin is directed to the categories create page & can see a Category Creation form consisting of 3 fields (Name, Description, Status)  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-admin.png)|
-| Categories Create for logged in users | --- | --- | --- | --- | --- | 
-| Categories Create Success for admin | Yes | Create a new category by filling out the fields & click on "Save" | The admin is directed to the categories list page & can see the new category with a message of awaiting approval | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-success-admin.png)|
-| Categories Create Success for logged in users | --- | --- | --- | --- | --- | 
-
+| Categories Create for admin & logged in users  | Yes | Direct to the Categories page & click on "Add Categories" | You are directed to the categories create page & can see a Category Creation form consisting of 3 fields (Name, Description, Status) | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-admin.png)|
+| Categories Create Success for admin & logged in users  | Yes | Create a new category by filling out the fields & click on "Save" | The admin or logged in user is directed to the categories list page & can see the new category with a message of awaiting approval | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-success-admin.png)|
 
 #### Categories update page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Categories editing for admin | --- | --- | --- | --- | --- | 
-| Categories editing for logged in users | --- | --- | --- | --- | --- |
+| Categories editing for admin & logged in users | Yes | Direct to a category you created & click edit | You are able to edit the Name & Description. By either clicking "Save" or "Cancel" you are directed back to the Category page | Pass | ![screenshot](documentation/testing/fulltesting/ft-update-admin-reg.png) |
+***Note that the registered users can only update their own categories whereas the admin can update all***
 
 #### Categories delete page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 | Categories Delete for admin & logged in users | Yes | Choose a category & click on "Delete" | You are directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
+***Note that the registered users can only delete their own categories whereas the admin can delete all***
 
 
 #### Sign In page
