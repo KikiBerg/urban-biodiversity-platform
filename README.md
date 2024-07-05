@@ -309,9 +309,30 @@ There are no differences between the local site and the deployed.
 
 ## Credits
 
+### Code used
+- I looked back to "Codestar" walkthrough material from Code Institute to get help constructing my initial project.
+- [StackOverflow for Pagination ](<https://stackoverflow.com/questions/30864011/display-only-some-of-the-page-numbers-by-django-pagination>)
+- [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Django Docs](https://www.djangoproject.com/)
+
 ### Content
+- The content of the posts comes from various articles published on: [The Guardian](https://www.google.co.uk/search?as_q=urban+biodiversity&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=all&as_sitesearch=www.theguardian.com&as_occt=any&as_filetype=&tbs=)
+- Rest of the content, e.g the About page, was written by myself.
 
 ### Media
+I used these sites for the photographic media used:
+- [Unsplash](https://unsplash.com/)
+- [Leonardo ai](https://leonardo.ai/)
 
 ### Acknowledgements
+- My mentors, Sheryl Goldberg & Tim Nelson, for their guidance.
+- The Code Institute Tutor support, for all the help.
+- Thanks to Kristyna Wach, my Cohort facilitator for making sure I had all the material & infromation needed as well as for her encouragement.
+- The Slack community, for the good advice.
+- My fellow co-student [Gudrun](https://github.com/g-omarsdottir) for her support and willingness to help!
 
+- - -
+
+I initially had much higher expectations and ideas for this project. 
+But as time was not on my side, I could not implement all the features I would like to.
+However, I am really satisfied with the end result and feel eager to deep diver into Django during my PP5.
