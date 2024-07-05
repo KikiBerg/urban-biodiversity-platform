@@ -239,10 +239,12 @@ Here's a detailed table for testing the various user stories of the project. The
 | Categories Title Link | Yes | Click on a category | You are directed to the category postlist page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-title-link.png)|
 | Categories Search form | Yes | Type some search words for a category | If matching, you are directed to a filtered page showing the relevant category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-search.png)|
 | Categories for admin | Yes | Sign in as admin & navigate to the Categories page | You are able to see all categories regardless status | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin.png)|
-| Categories editing for admin | Yes | Click the edit button | You are directed to an update page & can update the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-edit.png)|
-| Categories deleting for admin | Yes | Click the edit button | You are directed to a delete page & can delete the category | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-delete.png)|
+| Categories for logged in users | Yes | Sign in as registered user & navigate to the Categories page | You are able to see only approved categories & manage your own | Pass | ![screenshot](documentation/testing/fulltesting/ft-catpage-cats-reg.png) |
+| Categories for non registered users | Yes | Navigate to the Categories page | You are only able to see approved categories | Pass | ![screenshot](documentation/testing/fulltesting/ft-catpage-cats-nonreg.png) |
+| Categories editing for admin | Yes | Click the edit button | You are directed to an update page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-edit.png)|
+| Categories editing for logged in users | Yes | Direct to a category you created & click the edit button | You are directed to an update page | Pass | ![screenshot](documentation/testing/fulltesting/ft-catpage-cats-reg-updatepage.png) |
+| Categories deleting for admin & logged in users | Yes | Click the edit button | You are directed to a delete page | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-delete.png)|
 | Categories status for admin | Yes | Click the dropdown button next to the delete button | You can change the status of the category from the dropdown menu | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-cats-admin-status.png)|
-| --- | --- | --- | --- | --- | --- |
 | Pagination - Page Links  | Yes | Navigate through the page links in the pagination section |  The correct page of categories list is displayed when clicking on each page number  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-pag-pagelinks.png)|
 | Pagination - First Page | Yes | Navigate to the Categories page, ensure the first page is displayed |  The pagination "cancels" the "Previous" button & activates (blue color) the "Next" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-first.png)|
 | Pagination - Last Page | Yes | Navigate to the Categories page, ensure the last page is displayed |  The pagination "cancels" the "Next" button & activates (blue color) the "Previous" button.  | Pass |![screenshot](documentation/testing/fulltesting/ft-postslist-pag-last.png)|
@@ -250,22 +252,31 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories post list page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Categories post list for admin | --- | --- | --- | --- | --- |
+| Categories post list for registered users | --- | --- | --- | --- | --- |
+| Categories post list for non-registered users | --- | --- | --- | --- | --- |
 
 #### Categories create page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 | Categories Create for admin | Yes | Direct to the Categories page & click on "Add Categories" | The admin is directed to the categories create page & can see a Category Creation form consisting of 3 fields (Name, Description, Status)  | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-admin.png)|
+| Categories Create for logged in users | --- | --- | --- | --- | --- | 
 | Categories Create Success for admin | Yes | Create a new category by filling out the fields & click on "Save" | The admin is directed to the categories list page & can see the new category with a message of awaiting approval | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-create-success-admin.png)|
+| Categories Create Success for logged in users | --- | --- | --- | --- | --- | 
 
 
 #### Categories update page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
+| Categories editing for admin | --- | --- | --- | --- | --- | 
+| Categories editing for logged in users | --- | --- | --- | --- | --- |
 
 #### Categories delete page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
 | Categories Delete for admin | Yes | Choose a category & click on "Delete" | The admin is directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
+| Categories Delete for logged in users | --- | --- | --- | --- | --- | 
+
 
 #### Sign In page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
