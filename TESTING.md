@@ -252,9 +252,9 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories post list page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Categories post list for admin | --- | --- | --- | --- | --- |
-| Categories post list for registered users | --- | --- | --- | --- | --- |
-| Categories post list for non-registered users | --- | --- | --- | --- | --- |
+| Categories post list for posts that belong to a category | Yes | Click on any category | You are directed to the category postlist page & should be able to see the posts that belong to this category if that is true | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-exist.png) |
+| Categories post list for posts that do not belong to a category | Yes | Click on any category | You are directed to the category postlist page & should be able to see a message in blue that informs you of the non existance of posts in this category | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-exist-not.png) |
+| Categories post list back to categories | Yes | Click on the "Back to Categories" button | You get directed back to the Categories page | Pass | ![screenshot](documentation/testing/fulltesting/ft-catlist-back.png) |
 
 #### Categories create page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
@@ -274,8 +274,7 @@ Here's a detailed table for testing the various user stories of the project. The
 #### Categories delete page
 | Feature | Tested? | Action | Expected Outcome | Pass/Fail | Screenshots |
 | --- | --- | --- | --- | --- | --- | 
-| Categories Delete for admin | Yes | Choose a category & click on "Delete" | The admin is directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
-| Categories Delete for logged in users | --- | --- | --- | --- | --- | 
+| Categories Delete for admin & logged in users | Yes | Choose a category & click on "Delete" | You are directed to a categories delete page & can see a warning & a "Confirm Delete" & "Cancel" buttons | Pass |![screenshot](documentation/testing/fulltesting/ft-catpage-delete-admin.png)|
 
 
 #### Sign In page
