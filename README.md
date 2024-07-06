@@ -69,9 +69,9 @@ Some of the stories were adjusted during the working process, so as to better fi
 ## Structural Design
 
 ### Content Structure:
-- **Posts:** A welcoming section offering a site summary and a collection of posted articles.
+- **Posts:** Includes a welcoming section offering a site summary and a collection of posted articles.
 - **Post Detail Pages:** In-depth content on featured articles, including a comment area. Limited access for non-registered users, allowing only comment viewing.
-- **About & Contact:** A comprehensive description of the site's purpose and a contact form for communication.
+- **About Us Page:** A comprehensive description of the site's purpose and a contact form for communication.
 - **Categories:** Showcasing all available blog categories. Restricted access for non-registered users.
 - **Categories Post List Pages:** Presenting a collection of articles belonging to a specific category. Limited access for non-registered users.
 - **Sign Up and Sign In Pages:** User registration and sign in pages providing enhanced access to commenting and category features.
@@ -163,9 +163,9 @@ I've prioritized my user stories using this method and used labels for my user s
     
     ![post detail page](documentation/readme/existing-features/feat009.png)
     </details>
-    
-- The additonal features as a **registered user** are:
-    - You can see the status of the category that the post belongs to (Approved (green), Pending (yellow), Rejected (red)).
+
+- As a **registered user**, you have access to the above mentioned features. The **additonal** ones are:
+    - You can see the status of the category that the post belongs to (Approved (green), Pending (yellow)).
     - You can create, update & delete your own comments.
     - After updating your comment you can see this message: "*Comment Updated! Our admin needs to approve this change first. Your updated comment will show again after that approval.*". Your message will appear again only if the admin approves the change you made.
     
@@ -175,8 +175,41 @@ I've prioritized my user stories using this method and used labels for my user s
     ![post detail page](documentation/readme/existing-features/feat010.png)
     </details>
 
+- As a **site admin**, you have access to **all** the above mentioned features (meaning the site admin can do everything a registered & a non-registered user can). The **additonal** ones are:
+    - You can see & manage all the comments left regardless of status (approved ones are green, pending ones are yellow).
+        
+    <details>
+    <summary>Click to see a whole post detail page as described above</summary>
+    
+    ![post detail page](documentation/readme/existing-features/feat011.png)
+    </details>
 
-### CRUD Functionality
+> **About & Contact**
+- This page has the same content for all users (admin, registered & non-registered users).
+- The About us section provides a comprehensive description of the site's purpose.
+- At the bottom of that section the user can see when that section was created & updated.
+- At the bottom of the page there is a contact form for communication with the site admin.
+- When the user submits a message, they get this information: "*Your message has been received! We'll get back to you soon.*"
+    
+    <details>
+    <summary>Click to see a whole about page as described above</summary>
+    
+    ![about page](documentation/readme/existing-features/feat012.png)
+    </details>
+
+> **Categories Page**
+- This page has a slightly different content depending on the authentication status of the user.
+- The **general common features** for all users regardless auth status are:
+    - You get information about your authentication status and are given the link to the Sign In page if that's the case.
+    - You can see the title of the page "Categories" at the top.
+    - You can search for a category using the search form.
+    - You can see a list of all the approved categories including title & description of the categories.
+    - You can click on the categories and get directed to the separate category post list page, showcasing if there are any posts belonging to that specific category.
+    - You can click on the "Back to Categories" button and get redirected to the main Categories page.
+    ![screenshot](documentation/readme/existing-features/feat013.png)
+    ![screenshot](documentation/readme/existing-features/feat014.png)
+    
+
 
 ### Future Features
 
