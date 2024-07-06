@@ -340,8 +340,6 @@ erDiagram
     Post }|--|{ User : downvotes
 ```
 
-![screenshot](documentation/readme/ubp-erd-finalupdate.png)
-
 - - -
 
 ## Testing
