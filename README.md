@@ -85,15 +85,15 @@ Some of the stories were adjusted during the working process, so as to better fi
 
 ## Wireframes
 I was thinking to use Balsamiq for my Wireframes, but felt that sketching by hand was much more effective for my  understanding of the project needs.
-- Here are the ones for the Post list page: 
+#### Here are the ones for the Post list page: 
 ![screenshot](documentation/readme/wireframes/wf-postlist01.jpg)
 ![screenshot](documentation/readme/wireframes/wf-postlist02.jpg)
 
-- Here are the ones for the Post detail page: 
+#### Here are the ones for the Post detail page: 
 ![screenshot](documentation/readme/wireframes/wf-postdetail01.jpg)
 ![screenshot](documentation/readme/wireframes/wf-postdetail02.jpg)
 
-- Here's the one for the Categories page: 
+#### Here's the one for the Categories page: 
 ![screenshot](documentation/readme/wireframes/wf-cats.jpg)
 
 - - -
