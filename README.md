@@ -84,7 +84,17 @@ Some of the stories were adjusted during the working process, so as to better fi
 - - -
 
 ## Wireframes
+I was thinking to use Balsamiq for my Wireframes, but felt that sketching by hand was much more effective for my  understanding of the project needs.
+- Here are the ones for the Post list page: 
+![screenshot](documentation/readme/wireframes/wf-postlist01.jpg)
+![screenshot](documentation/readme/wireframes/wf-postlist02.jpg)
 
+- Here are the ones for the Post detail page: 
+![screenshot](documentation/readme/wireframes/wf-postdetail01.jpg)
+![screenshot](documentation/readme/wireframes/wf-postdetail02.jpg)
+
+- Here's the one for the Categories page: 
+![screenshot](documentation/readme/wireframes/wf-cats.jpg)
 
 - - -
 
@@ -260,7 +270,6 @@ I've prioritized my user stories using this method and used labels for my user s
 - [![Django](https://img.shields.io/badge/Django-grey?logo=django&logoColor=092E20)](https://www.djangoproject.com) used as the Python framework for the site.
 - [![Cloudinary](https://img.shields.io/badge/Cloudinary-grey?logo=cloudinary&logoColor=3448C5)](https://cloudinary.com) used for online static file storage.
 - [![WhiteNoise](https://img.shields.io/badge/WhiteNoise-grey?logo=python&logoColor=FFFFFF)](https://whitenoise.readthedocs.io) used for serving static files with Heroku.
-- [![Balsamiq](https://img.shields.io/badge/Balsamiq-grey?logo=barmenia&logoColor=CE0908)](https://balsamiq.com/wireframes) used for creating wireframes.
 - [![Font Awesome](https://img.shields.io/badge/Font_Awesome-grey?logo=fontawesome&logoColor=528DD7)](https://fontawesome.com) used for the icons.
 
 - - -
