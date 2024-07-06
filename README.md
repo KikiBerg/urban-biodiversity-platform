@@ -163,15 +163,21 @@ I've prioritized my user stories using this method and used labels for my user s
 - The **general common features** for all users regardless auth status are:
     - You can see the title, author, date and category of the post.
     - You can see the image of the post (same as on the previous post list page).
-    - You can read the content of the article.
+    - You can read the content of the article (only if the category is approved & you're registered)
     - You can see the number of comments left at the end of the article.
     - You can read the comments left (only the approved ones, marked with a green colour.) 
     - You can see a card informing you that you can leave a comment. This card informs you also about your auth status and gives you the link to the Sign In page.
     
     <details>
-    <summary>Click to see a whole post detail page as described above</summary>
+    <summary>Click to see a whole post detail page that belongs to an approved category</summary>
     
     ![post detail page](documentation/readme/existing-features/feat009.png)
+    </details>
+
+    <details>
+    <summary>Click to see a whole post detail page that belongs to a category not yet approved</summary>
+    
+    ![post detail page](documentation/readme/existing-features/feat017.png)
     </details>
 
 - As a **registered user**, you have access to the above mentioned features. The **additional** ones are:
