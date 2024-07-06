@@ -66,6 +66,28 @@ Some of the stories were adjusted during the working process, so as to better fi
 
 - - -
 
+## Structural Design
+
+### Content Structure:
+- **Posts:** An inviting section offering a site summary and a collection of highlighted articles.
+- **Post Detail Pages:** In-depth content on featured articles, featuring a comment area. Limited access for non-registered users, allowing only comment viewing.
+- **About & Contact:** A comprehensive description of the site's purpose and a contact form for communication.
+- **Categories:** Showcasing all available blog categories. Restricted access for non-registered users.
+- **Categories Post List Pages:** Presenting a collection of articles belonging to a specific category. Limited access for non-registered users.
+- **Sign Up and Sign In Pages:** User registration and sign in pages providing enhanced access to commenting and category features.
+
+### Interface Design:
+- **Adaptive layouts** for optimal performance on various devices.
+- **Engaging components** like buttons, links, and forms developed with a focus on user-friendliness.
+- **Visual indicators** (symbols, color transitions) to enrich interactive elements and boost user satisfaction.
+
+- - -
+
+## Wireframes
+
+
+- - -
+
 ## Agile Development Process
 
 ### GitHub Projects
@@ -101,6 +123,7 @@ I've prioritized my user stories using this method and used labels for my user s
 ### CRUD Functionality
 
 ### Future Features
+
 
 - - -
 
@@ -320,7 +343,7 @@ There are no differences between the local site and the deployed.
 - Rest of the content, e.g the About page, was written by myself.
 
 ### Media
-I used these sites for the photographic media used:
+I used these sites for the photographic media:
 - [Unsplash](https://unsplash.com/)
 - [Leonardo ai](https://leonardo.ai/)
 

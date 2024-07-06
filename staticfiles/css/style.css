@@ -338,6 +338,10 @@ body {
     text-align: center;
 }
 
+.card-header.bg-primary {
+    color: var(--color-sky);
+}
+
 
 /* -----------------------------------------------------------Commenting styles */
 
