@@ -69,8 +69,8 @@ Some of the stories were adjusted during the working process, so as to better fi
 ## Structural Design
 
 ### Content Structure:
-- **Posts:** An inviting section offering a site summary and a collection of highlighted articles.
-- **Post Detail Pages:** In-depth content on featured articles, featuring a comment area. Limited access for non-registered users, allowing only comment viewing.
+- **Posts:** A welcoming section offering a site summary and a collection of posted articles.
+- **Post Detail Pages:** In-depth content on featured articles, including a comment area. Limited access for non-registered users, allowing only comment viewing.
 - **About & Contact:** A comprehensive description of the site's purpose and a contact form for communication.
 - **Categories:** Showcasing all available blog categories. Restricted access for non-registered users.
 - **Categories Post List Pages:** Presenting a collection of articles belonging to a specific category. Limited access for non-registered users.
@@ -119,6 +119,62 @@ I've prioritized my user stories using this method and used labels for my user s
 ## Features
 
 ### Existing Features
+
+> **Sign Up & Sign In**
+- These features are placed separately to the right side of the navigation bar for easier orientation. There is a dropdown menu for choosing to either sign in or sign up.
+- Depending on whether the user has already an account or not, they should either sign in or sign up. By clicking on either the "Sign In" or the "Sign Up" button, they are respectively redirected to the sign in or the sign up form pages. 
+- The users are also informed if they are or not signed in at the moment. This information is active on all pages. There's a link to the Sign In form page in this case.
+- When signed in, there is an informative section on the top of each page, reminding of the actual/active username.
+![screenshot](documentation/readme/existing-features/feat001.png)
+![screenshot](documentation/readme/existing-features/feat002.png)
+
+> **Sign Out**
+- In case the user wants to sign out they will be asked to confirm that decision. If they click on the "Sign out" button they will be signed out.
+![screenshot](documentation/readme/existing-features/feat003.png)
+![screenshot](documentation/readme/existing-features/feat004.png)
+
+> **Navigation Bar**
+- The navigation bar ensures convenient access to all site areas, adapts to various display resolutions, and incorporates user authentication features as documented right above (Sign In, Sign Up). It consists of the three main pages, Posts - About us - Categories
+![screenshot](documentation/readme/existing-features/feat005.png)
+![screenshot](documentation/readme/existing-features/feat006.png)
+
+> **Posts page**
+- This page has the same content for all users (admin, registered & non-registered users).
+- It includes a welcoming section offering a site summary and a collection of posted articles.
+- The posts list section shows the collection of posted articles.
+- On the left side you can find the post image (ca 1/3 of the width). To the right of the image there's the post title, the date it was posted, the author as well as a short excerpt that gives a hint of what the post is about.
+- At the bottom of the page there's a page pagination feature for better orientation throughout the different post pages. There's a limit of 3 posts per page.
+- By clicking on the title of the post, the user is directed to the detail page of that post.
+![screenshot](documentation/readme/existing-features/feat007.png)
+![screenshot](documentation/readme/existing-features/feat008.png)
+
+> **Posts Detail Pages**
+- This page has a slightly different content depending on the authentication status of the user.
+- The **general common features** for all users regardless auth status are:
+    - You can see the title, author, date and category of the post.
+    - You can see the image of the post (same as on the previous post list page).
+    - You can read the content of the article.
+    - You can see the number of comments left at the end of the article.
+    - You can read the comments left (only the approved ones, marked with a green colour.) 
+    - You can see a card informing you that you can leave a comment. This card informs you also about your auth status and gives you the link to the Sign In page.
+    
+    <details>
+    <summary>Click to see a whole post detail page as described above</summary>
+    
+    ![post detail page](documentation/readme/existing-features/feat009.png)
+    </details>
+    
+- The additonal features as a **registered user** are:
+    - You can see the status of the category that the post belongs to (Approved (green), Pending (yellow), Rejected (red)).
+    - You can create, update & delete your own comments.
+    - After updating your comment you can see this message: "*Comment Updated! Our admin needs to approve this change first. Your updated comment will show again after that approval.*". Your message will appear again only if the admin approves the change you made.
+    
+    <details>
+    <summary>Click to see a whole post detail page as described above</summary>
+    
+    ![post detail page](documentation/readme/existing-features/feat010.png)
+    </details>
+
 
 ### CRUD Functionality
 
