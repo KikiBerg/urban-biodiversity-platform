@@ -252,7 +252,6 @@ I've prioritized my user stories using this method and used labels for my user s
 ### Future Features
 
 - Many-to-many relationship between posts & categories: In the future I would like to make it possible to apply several categories to the posts. Right now, a post can belong to only one category.
-- Show only posts that belong to approved categories: In the future I would like to make the necessary changes so that non-registered users can only see posts that belong to approved categories when on Posts main page.
 - Upvoting & Downvoting: I've added these fields in my Post model, but due to lack of time I haven't implemented them. In the future I would like to make it possible for authenticated users to be able to upvote or downvote a post.
 - Category delete: Right now, a registered user can delete their own categories without approval from the site admin. (Approval from site admin is currently only needed when creating & updating their own categories). In the future I would like to add extra security so that the admin approves the deletion too. That is seen as a minor feature, as the registered users have crud only for their own categories & as mentioned their new categories or their changes need to be approved first by the site admin.
 - Navigation: I would like to add a button at the end of the post detail page, making it easier to navigate back to the main posts page if the user wants to.
