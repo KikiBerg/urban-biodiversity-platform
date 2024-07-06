@@ -219,7 +219,7 @@ I've prioritized my user stories using this method and used labels for my user s
     <summary>Click to see a whole category page as described above</summary>
     
     ![category page](documentation/readme/existing-features/feat015.png)
-    </details>
+    </details>    
 
 - As a **site admin**, you have access to **all** the above mentioned features (meaning the site admin can do everything a registered & a non-registered user can). The **additional** features are:
     - You can see & manage all the categories regardless of status (approved ones are green, pending ones are yellow, rejected are red).
@@ -235,11 +235,17 @@ I've prioritized my user stories using this method and used labels for my user s
 
 ### Future Features
 
+- Many-to-many relationship between posts & categories: In the future I would like to make it possible to apply several categories to the posts. Right now, a post can belong to only one category.
+- Show only posts that belong to approved categories: In the future I would like to make the necessary changes so that non-registered users can only see posts that belong to approved categories when on Posts main page.
+- Upvoting & Downvoting: I've added these fields in my Post model, but due to lack of time I haven't implemented them. In the future I would like to make it possible for authenticated users to be able to upvote or downvote a post.
+- Category delete: Right now, a registered user can delete their own categories without approval from the site admin. (Approval from site admin is currently only needed when creating & updating their own categories). In the future I would like to add extra security so that the admin approves the deletion too. That is seen as a minor feature, as the registered users have crud only for their own categories & as mentioned their new categories or their changes need to be approved first by the site admin.
+- Navigation: I would like to add a button at the end of the post detail page, making it easier to navigate back to the main posts page if the user wants to.
+- Media in posts: I would like to be able to add pictures & links inside the posts so as to make the reading experience more pleasant. (I had this implemented in the Django interface via Summernote, but was getting several errors when validating, so I decided to take them away for now.)
 
 - - -
 
 ## Tools & Technologies
-- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/) used as the relational database management.
+- [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/) was used as the relational database management.
 - [![Git](https://img.shields.io/badge/Git-grey?logo=git&logoColor=F05032)](https://git-scm.com) used for version control. (\`git add\`, \`git commit\`, \`git push\`)
 - [![Git](https://img.shields.io/badge/GitHub-grey?logo=github&logoColor=181717)](https://github.com) used for secure online code storage.
 - [![Gitpod](https://img.shields.io/badge/Gitpod-grey?logo=gitpod&logoColor=FFAE33)](https://gitpod.io) used as a cloud-based IDE for development.
@@ -258,36 +264,83 @@ I've prioritized my user stories using this method and used labels for my user s
 - - -
 
 ## Database Design
-Entity Relationship Diagrams (ERD) help to visualize database architecture before creating models.
-Understanding the relationships between different tables can save time later in the project.
+Entity Relationship Diagrams (ERD) aid in conceptualizing the skeleton of a database prior to creating the models. 
+- Identifying the connections among various tables at the initial stages contributes to time efficiency. 
+- These diagrams offer a structured representation of the system's data tables, their respective fields, and the interactions among the tables.
 
-- Table: **Category**
+Here's the diagram for Urban Biodiversity Platform project:
 
-    | **PK** | **id** (unique) | Type | Notes |
-    | --- | --- | --- | --- |
+```mermaid
+erDiagram
+    About {
+        int id
+        string title
+        datetime created_at
+        datetime updated_at
+        text content
+        string profile_image
+    }
+    
+    ContactUs {
+        int id
+        string name
+        string email
+        text message
+        boolean read
+    }
+    
+    Category {
+        int id
+        string name
+        text description
+        string status
+        int created_by
+    }
+    
+    Post {
+        int id
+        string title
+        string slug
+        int author
+        string featured_image
+        text content
+        datetime created_at
+        datetime updated_at
+        boolean is_featured
+        string status
+        text excerpt
+        int category
+    }
+    
+    Comment {
+        int id
+        int post
+        int author
+        text content
+        datetime created_at
+        datetime updated_at
+        string status
+        boolean approved
+    }
+    
+    User {
+        int id
+        string username
+        string email
+        string password
+    }
 
+    About }|--|{ User : created_by
+    Category }|--|| User : created_by
+    Post }|--|| User : author
+    Post }|--|{ Category : category
+    Comment }|--|| Post : post
+    Comment }|--|| User : author
+    Post }|--|{ User : upvotes
+    Post }|--|{ User : downvotes
+```
 
-- Table: **Post**
-
-    | **PK** | **id** (unique) | Type | Notes |
-    | --- | --- | --- | --- |
-
-- Table: **Comment**
-
-    | **PK** | **id** (unique) | Type | Notes |
-    | --- | --- | --- | --- |
-
-- Table: **About**
-
-    | **PK** | **id** (unique) | Type | Notes |
-    | --- | --- | --- | --- |
-
-- Table: **ContactUs**
-
-    | **PK** | **id** (unique) | Type | Notes |
-    | --- | --- | --- | --- |
-
-![screenshot](documentation/erd.png)
+![screenshot](documentation/readme/ubp-erd-finalupdate.png)
 
 - - -
 
