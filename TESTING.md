@@ -169,13 +169,23 @@ I have tested my deployed project on two different browsers to check for compati
 
 ### Testing User Stories
 
-Here's a detailed table for testing the various user stories of the project. The aim is to follow up the functionality implementation.
+Here's a table for testing the various user stories of the project. The aim is to follow up the functionality implementation.
 
-| User Story ID | Title | Tested? | Response | Pass/Fail |
-|---------------|-------|---------|----------|-----------|
-| #1 | User Registration | Yes | No issues | Pass |
-| #2 | User Registration | Yes | No issues | Pass |
-| #3 | User Registration | Yes | No issues | Pass |
+| Title | User Story | Response | 
+| --- | --- | --- |
+| User Login and Logout | As a **registered user** I want to **log in using my username and password** so that I can **access my personalized content.** | ![screenshot](documentation/testing/userstory/us_test_01.png) |
+| User Registration | As a **new user** I want to **register a new account** so that I can **interact with posts by commenting.** | ![screenshot](documentation/testing/userstory/us_test_02.png) |
+| Comment on Posts | As a **registered user** I want to **comment on posts** so that I can **participate in discussions and provide feedback.** | ![screenshot](documentation/testing/userstory/us_test_03.png) |
+| Moderate comments | As a **site admin** I want to **moderate comments, including editing and deleting comments** so that I can **manage community interactions and discussions.** | ![screenshot](documentation/testing/userstory/us_test_04_.png) |
+| Manage Posts | As a **site admin** I want to **moderate posts, including creating, updating, and deleting posts** so that I can **maintain content quality and relevance.** | ![screenshot](documentation/testing/userstory/us_test_05.png) |
+| Create a new post | As a **site admin** I want to **create a new post by entering a title and content** so that I can **share new content with others.** |![screenshot](documentation/testing/userstory/us_test_06.png) |
+| Manage User Accounts | As a **site admin** I want to **manage users, including editing and deleting user accounts** so that I can **ensure the integrity and safety of the community.** | ![screenshot](documentation/testing/userstory/us_test_07.png) |
+| Group Posts by Category | As a **registered user** I want to **view posts that belong to a specific category** so that I can **read and explore the content more easily.** | ![screenshot](documentation/testing/userstory/us_test_08.png) |
+| Manage Categories | As a **registered user** I want to **manage my own categories, including adding, editing, and deleting categories** so that I can **contribute to the content of the platform.** | ![screenshot](documentation/testing/userstory/us_test_09.png) |
+| Manage Categories | As a **site admin** I want to **manage all categories, including adding, editing, and deleting categories** so that I can **organize content effectively.** | ![screenshot](documentation/testing/userstory/us_test_10.png) |
+| Search categories | As a **site admin** I want to **search through the various post categories** so that I can **find the posts that I'm more interested in.** | ![screenshot](documentation/testing/userstory/us_test_11.png) |
+| Update About Page Content | As a **site admin** I want to **view and edit the About page** so that I can **update information about the website.** | ![screenshot](documentation/testing/userstory/us_test_12.png) |
+| View About Page | As a **new user** I want to **view the About page** so that I can **learn more about the website and its purpose.** | ![screenshot](documentation/testing/userstory/us_test_13.png) |
 
 
 - - -
@@ -304,3 +314,9 @@ Here's a detailed table for testing the various user stories of the project. The
 - - -
 
 ### Bugs
+
+I am not sure if these can be identified as a bugs, but wanted to document them here in order to avoid confusion:
+ - When the admin changes the status of a category, that category gets moved at the end of the list
+ - Another thing is that upon changing a pending category to approved, the text in the blue card (*"This category is awaiting approval."*) only disappears if the page is refreshed.
+
+Otherwise, there were no bugs that I am aware of.

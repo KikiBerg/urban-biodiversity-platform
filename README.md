@@ -55,7 +55,7 @@ Some of the stories were adjusted during the working process, so as to better fi
 | Manage Posts | As a **site admin** I want to **moderate posts, including creating, updating, and deleting posts** so that I can **maintain content quality and relevance.** | Must Have |
 | Create a new post | As a **site admin** I want to **create a new post by entering a title and content** so that I can **share new content with others.** | Must Have |
 | Manage User Accounts | As a **site admin** I want to **manage users, including editing and deleting user accounts** so that I can **ensure the integrity and safety of the community.** | Must Have |
-| View All Posts by Category | As a **registered user** I want to **view posts grouped in different categories** so that I can **read and explore the content more easily.** | Must Have |
+| Group Posts by Category | As a **registered user** I want to **view posts that belong to a specific category** so that I can **read and explore the content more easily.** | Must Have |
 | Manage Categories | As a **registered user** I want to **manage my own categories, including adding, editing, and deleting categories** so that I can **contribute to the content of the platform.** | Should Have |
 | Manage Categories | As a **site admin** I want to **manage all categories, including adding, editing, and deleting categories** so that I can **organize content effectively.** | Should Have |
 | Search categories | As a **site admin** I want to **search through the various post categories** so that I can **find the posts that I'm more interested in.** | Should Have |
@@ -241,11 +241,13 @@ I've prioritized my user stories using this method and used labels for my user s
 - Category delete: Right now, a registered user can delete their own categories without approval from the site admin. (Approval from site admin is currently only needed when creating & updating their own categories). In the future I would like to add extra security so that the admin approves the deletion too. That is seen as a minor feature, as the registered users have crud only for their own categories & as mentioned their new categories or their changes need to be approved first by the site admin.
 - Navigation: I would like to add a button at the end of the post detail page, making it easier to navigate back to the main posts page if the user wants to.
 - Media in posts: I would like to be able to add pictures & links inside the posts so as to make the reading experience more pleasant. (I had this implemented in the Django interface via Summernote, but was getting several errors when validating, so I decided to take them away for now.)
+- Managing comments from the frontend page: In the future I want the site admin to be able to manage the comments directly from the frontend page, as with categories, and not having to use the Django interface for that.
 
 - - -
 
 ## Tools & Technologies
 - [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/) was used as the relational database management.
+- [Mermaid Live Editor](https://github.com/mermaid-js/mermaid-live-editor) was used for generating my final ERD.
 - [![Git](https://img.shields.io/badge/Git-grey?logo=git&logoColor=F05032)](https://git-scm.com) used for version control. (\`git add\`, \`git commit\`, \`git push\`)
 - [![Git](https://img.shields.io/badge/GitHub-grey?logo=github&logoColor=181717)](https://github.com) used for secure online code storage.
 - [![Gitpod](https://img.shields.io/badge/Gitpod-grey?logo=gitpod&logoColor=FFAE33)](https://gitpod.io) used as a cloud-based IDE for development.
@@ -268,7 +270,7 @@ Entity Relationship Diagrams (ERD) aid in conceptualizing the skeleton of a data
 - Identifying the connections among various tables at the initial stages contributes to time efficiency. 
 - These diagrams offer a structured representation of the system's data tables, their respective fields, and the interactions among the tables.
 
-Here's the diagram for Urban Biodiversity Platform project:
+Here's the diagram for the Urban Biodiversity Platform project:
 
 ```mermaid
 erDiagram
