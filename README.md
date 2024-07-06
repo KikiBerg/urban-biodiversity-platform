@@ -164,9 +164,9 @@ I've prioritized my user stories using this method and used labels for my user s
     ![post detail page](documentation/readme/existing-features/feat009.png)
     </details>
 
-- As a **registered user**, you have access to the above mentioned features. The **additonal** ones are:
-    - You can see the status of the category that the post belongs to (Approved (green), Pending (yellow)).
+- As a **registered user**, you have access to the above mentioned features. The **additional** ones are:
     - You can create, update & delete your own comments.
+    - You can see the status of the category that the post belongs to (Approved (green), Pending (yellow)).    
     - After updating your comment you can see this message: "*Comment Updated! Our admin needs to approve this change first. Your updated comment will show again after that approval.*". Your message will appear again only if the admin approves the change you made.
     
     <details>
@@ -175,7 +175,7 @@ I've prioritized my user stories using this method and used labels for my user s
     ![post detail page](documentation/readme/existing-features/feat010.png)
     </details>
 
-- As a **site admin**, you have access to **all** the above mentioned features (meaning the site admin can do everything a registered & a non-registered user can). The **additonal** ones are:
+- As a **site admin**, you have access to **all** the above mentioned features (meaning the site admin can do everything a registered & a non-registered user can). The **additional** ones are:
     - You can see & manage all the comments left regardless of status (approved ones are green, pending ones are yellow).
         
     <details>
@@ -205,11 +205,33 @@ I've prioritized my user stories using this method and used labels for my user s
     - You can search for a category using the search form.
     - You can see a list of all the approved categories including title & description of the categories.
     - You can click on the categories and get directed to the separate category post list page, showcasing if there are any posts belonging to that specific category.
+    - You can see the title of the post belonging to that category, as well as the excerpt, the date it was posted & the name of the author who wrote that post.
     - You can click on the "Back to Categories" button and get redirected to the main Categories page.
     ![screenshot](documentation/readme/existing-features/feat013.png)
     ![screenshot](documentation/readme/existing-features/feat014.png)
-    
 
+- As a **registered user**, you have access to the above mentioned features. The **additional** ones are:
+    - You can create, update & delete your own categories.    
+    - You can still see only the approved categories but a badge informing you of the category status is now visible: "Approved" (green).
+    - After creating or updating your category you can see this message: "*This category is awaiting approval.*" and "*Category updated successfully!Changes are pending approval.*"
+    
+    <details>
+    <summary>Click to see a whole category page as described above</summary>
+    
+    ![category page](documentation/readme/existing-features/feat015.png)
+    </details>
+
+- As a **site admin**, you have access to **all** the above mentioned features (meaning the site admin can do everything a registered & a non-registered user can). The **additional** features are:
+    - You can see & manage all the categories regardless of status (approved ones are green, pending ones are yellow, rejected are red).
+    - You can activelly change the status of the categories from that page.
+    - The changes will even appear on the category badge at the post detail page too.
+    - As you have access to all of the categories (meaning there's more content shown now on the page), the content gets divided to multiple pages through page pagination right at the bottom.
+
+    <details>
+    <summary>Click to see a whole category page as described above</summary>
+    
+    ![category page](documentation/readme/existing-features/feat016.png)
+    </details>
 
 ### Future Features
 
