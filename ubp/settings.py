@@ -109,10 +109,6 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-# CSRF_TRUSTED_ORIGINS = [
-#     "https://8000-kikiberg-urbanbiodivers-v3dkqxj2ic2.ws.codeinstitute-ide.net",
-#     "https://ubp-7ea7f2ca1a6d.herokuapp.com"
-# ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
